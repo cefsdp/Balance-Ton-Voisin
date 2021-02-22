@@ -1,2 +1,8 @@
 <h1>Publications#edit</h1>
 <p>Find me in app/views/publications/edit.html.erb</p>
+
+<%= simple_form_for(@publication) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>

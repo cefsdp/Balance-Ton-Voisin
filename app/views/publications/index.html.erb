@@ -2,7 +2,18 @@
 <p>Find me in app/views/publications/index.html.erb</p>
 
 <ul>
-  <% @publications.each do |publication| %>
-    <li><%= publication.title %></li>
+  <% @publications.reverse.each do |publication| %>
+    <li><%= link_to publication.title, publication_path(publication) %>
+	    <% if policy(publication).edit? %>
+	      <%= link_to "Mettre à jour", edit_publication_path(publication) %>
+	  	<% end %>
+	  	<% if policy(publication).destroy? %>
+	      <%= link_to "Supprimer", publication_path(publication), method: :delete %>
+	  	<% end %>
+  	</li>
   <% end %>
 </ul>
+
+<% if policy(Publication).create? %>
+  <%= link_to "Créer un post", new_publication_path %>
+<% end %>
