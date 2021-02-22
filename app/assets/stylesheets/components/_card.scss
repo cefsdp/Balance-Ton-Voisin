@@ -44,7 +44,60 @@
       }
     }
   }
-  
+
+
+  .card-clash {
+    background-color: white;
+    color: black;
+    padding: 30px;
+    border-radius: 40px;
+    transition: transform .2s; /* Animation */
+    &:hover {
+      transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      text-decoration: none;
+    }
+    .userclash {
+      display: flex;
+        .userinfo{
+            flex: 1 1 auto;
+            .user-data {
+            display: flex;
+            justify-content: flex-start;
+            .username { 
+                padding-left: 15px;  
+                font-size: 30px;
+                font-weight: 700;
+                align-items: center;
+                align-self: center;
+                }
+            }
+            .description {
+            padding-top: 5px;
+            text-align: justify;
+            font-size: 16px;
+            }
+            .usermiddle{
+                align-self: center;
+                font-size: 75px;
+                padding: 0px 50px;
+            }
+        }
+    }
+    .more-comments {
+      padding-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      .coms {
+        color: grey;
+        font-size: 12px;
+      }
+    }
+  }
+
+
+
+
   .card-category {
     background-size: cover;
     background-position: center;
