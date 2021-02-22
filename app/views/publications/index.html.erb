@@ -5,10 +5,14 @@
   <% @publications.reverse.each do |publication| %>
     <li><%= link_to publication.title, publication_path(publication) %>
 	    <% if policy(publication).edit? %>
-	      <%= link_to "Mettre à jour", edit_publication_path(publication) %>
+	      <%= link_to edit_publication_path(publication) do %>
+	        <i class="fas fa-edit"></i>
+		  <% end %>
 	  	<% end %>
 	  	<% if policy(publication).destroy? %>
-	      <%= link_to "Supprimer", publication_path(publication), method: :delete %>
+	      <%= link_to publication_path(publication), method: :delete do %>
+	        <i class="far fa-trash-alt"></i>
+	      <% end %>
 	  	<% end %>
   	</li>
   <% end %>
