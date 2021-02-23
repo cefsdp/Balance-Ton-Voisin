@@ -1,5 +1,4 @@
 class PublicationsController < ApplicationController
-
   def index
     @publications = policy_scope(Publication)
   end
