@@ -1,97 +1,35 @@
+
+<% if current_user == nil %>
 <div class="container">
-
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-
-  <div class="cards">
-    <div class="card-clash">
-      <div class="text-center mb-4">
-        <div class="users-avatar">
-          <div class="user1-avatar">
-            <img class="avatar-clash" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          </div>
-          <div class="user2-avatar">
-            <img class="avatar-clash" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          </div>
-        </div>
-        <div class="users-username">
-          <div class="username1">Karen</div>
-          <div class="username2">Karen</div>
-        </div>
-        <div class="description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </div>
-      </div>
+  <div class="d-flex justify-content-left align-items-center">
+    <%= image_tag "logo.png", alt: "alttext", width:200%>
+    <h1> #BalanceTonVoisin </h1>
+  </div>
+  <div>
+    <div>
+      <%= image_tag "graphique.png", alt: "alttext", width: 400%>
+      <p> Attention ce graphique ne donne aucune information </p>
     </div>
-    <div class="card-clash">
-        <div class="users-avatar">
-          <div class="user1-avatar">
-            <img class="avatar-clash" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          </div>
-          <div class="user2-avatar">
-            <img class="avatar-clash" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          </div>
-        </div>
-        <div class="users-username">
-          <div class="username1">Karen</div>
-          <div class="username2">Karen</div>
-        </div>
-        <div class="description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </div>
-    </div>
-    <div class="card-clash">
-        <div class="users-avatar">
-          <div class="user1-avatar">
-            <img class="avatar-clash" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          </div>
-          <div class="user2-avatar">
-            <img class="avatar-clash" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          </div>
-        </div>
-        <div class="users-username">
-          <div class="username1">Karen</div>
-          <div class="username2">Karen</div>
-        </div>
-        <div class="description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </div>
+    <div>
+      <%= render "devise/shared/login" %>
+      <%= link_to "Sign up", new_user_registration_path  %>
     </div>
   </div>
 
+  <div>
+    <h2> Balance ton Voisin c'est:</h2>
 
-  <br>
-  <div class="cards">
-    <div class="card-post">
-      <div class="text-center mb-4">
-        <div class="user-data">
-          <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-          <div class="username">Karen</div>
-        </div>
-        <div class="description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </div>
-        <div class="more-comments ">
-          <p class="mb-0 coms">Voir les commentaires ></p>
-        </div>
-      </div>
-    </div>
+    <li> 350 voisins incarcérés </li>
+    <li> 150 pangolins sauvés </li>
+    <li> 30 000 chocolatines </li>
+    <li> 250 virus réduits à neant </li>
+    <li> 1 arbre planté </li>
+    <li> 1 Vichy renouvellé </li>
   </div>
-
-  <br>
-
-  <div class="card-pb">
-    <div class="text"> Un problème avec ton voisin ? </div>
-    <div> <a class="btn btn-flat" href="#">Publier</a> </div>
-  </div>
-
-  <br>
-
-  <div class="title">Les Clashs à la une</div>
-
-  <br>
-
 </div>
 
-<a class="btn btn-ghost" href="#">Write a story</a> <a class="btn btn-flat" href="#">Publish now</a>
+<% else  %>
+  <h1> patate </h1>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% end  %>
 
