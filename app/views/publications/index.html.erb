@@ -3,6 +3,9 @@
 
 <ul>
   <% @publications.reverse.each do |publication| %>
+
+ <div class="cards">
+ 	<div class="card-post">
     <li><%= link_to publication.title, publication_path(publication) %>
 	    <% if policy(publication).edit? %>
 	      <%= link_to edit_publication_path(publication) do %>
@@ -15,6 +18,10 @@
 	      <% end %>
 	  	<% end %>
   	</li>
+  </div>
+
+ </div>
+
   <% end %>
 </ul>
 
