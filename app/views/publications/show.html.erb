@@ -7,7 +7,7 @@
 
 
 <% @comments.each do |comment| %>
-	<p><%= comment.user.email %>, <%= comment.created_at %> </p>
+	<p><%= comment.user.username %>, <%= comment.created_at %> </p>
 	<p><%= comment.content %></p>
 <% end %>
 
