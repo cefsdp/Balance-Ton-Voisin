@@ -1,0 +1,34 @@
+<% if current_user == nil %>
+<div class="container">
+  <div class="d-flex justify-content-left align-items-center">
+    <%= image_tag "logo.png", alt: "alttext", width:200%>
+    <h1> #BalanceTonVoisin </h1>
+  </div>
+  <div>
+    <div>
+      <%= image_tag "graphique.png", alt: "alttext", width: 400%>
+      <p> Attention ce graphique ne donne aucune information </p>
+    </div>
+    <div>
+      <%= render "devise/shared/login" %>
+      <%= link_to "Sign up", new_user_registration_path  %>
+    </div>
+  </div>
+
+  <div>
+    <h2> Balance ton Voisin c'est:</h2>
+
+    <li> 350 voisins incarcérés </li>
+    <li> 150 pangolins sauvés </li>
+    <li> 30 000 chocolatines </li>
+    <li> 250 virus réduits à neant </li>
+    <li> 1 arbre planté </li>
+    <li> 1 Vichy renouvellé </li>
+  </div>
+</div>
+
+<% else  %>
+  <h1> patate </h1>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% end  %>
+
