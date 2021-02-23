@@ -4,3 +4,15 @@
 <h2><%= @publication.title %></h2>
 <p><%= @publication.content %></p>
 <p><%= @publication.user.email %></p>
+
+
+<% @comments.each do |comment| %>
+	<p><%= comment.user.email %>, <%= comment.created_at %> </p>
+	<p><%= comment.content %></p>
+<% end %>
+
+
+<%= simple_form_for [ @publication, @comment ] do |f| %>
+  <%= f.input :content, label: "Ajouter un commentaire" %>
+  <%= f.submit %>
+<% end %>
