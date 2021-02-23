@@ -1,6 +1,5 @@
 <div class="container my-5">
 	<h1 class="mb-4">Les derniers posts</h1>
-
 	<% @publications.reverse.each do |publication| %>
 		<%= link_to publication_path(publication) do %>
 			<div class="card-post">
