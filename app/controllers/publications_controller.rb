@@ -7,6 +7,8 @@ class PublicationsController < ApplicationController
   def show
     @publication = Publication.find(params[:id])
     authorize @publication
+    @comments = Comment.where(publication_id: @publication)
+    @comment = Comment.new
   end
 
   def new
@@ -39,6 +41,8 @@ class PublicationsController < ApplicationController
     @publication.destroy
     redirect_to publications_path
   end
+  
+  private
 
   def publication_params
     params.require(:publication).permit(:title, :user, :content)
