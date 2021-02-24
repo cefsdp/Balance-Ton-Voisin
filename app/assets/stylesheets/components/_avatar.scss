@@ -1,10 +1,16 @@
 .avatar {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+
 }
 .avatar-large {
   width: 56px;
+  height: 56px;
   border-radius: 50%;
+  object-fit: cover;
+
 }
 .avatar-bordered {
   width: 40px;
@@ -20,5 +26,8 @@
 }
 .avatar-clash {
   width: 100px;
+  height: 100px;
   border-radius: 50%;
+  object-fit: cover;
+
 }

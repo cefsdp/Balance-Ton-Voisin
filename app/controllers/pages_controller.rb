@@ -5,9 +5,12 @@ class PagesController < ApplicationController
   before_action :devise_mapping, only: [:home]
 
   def home
-    @disable_nav = true
+    @disable_nav = true if current_user == nil
+    @publications = policy_scope(Publication)
+    @publication = Publication.new
     # raise
   end
+
 
   def resource_name
     @resource_name = :user

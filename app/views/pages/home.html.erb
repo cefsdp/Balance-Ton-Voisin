@@ -1,35 +1,178 @@
 
 <% if current_user == nil %>
-<div class="container">
-  <div class="d-flex justify-content-left align-items-center">
-    <%= image_tag "logo.png", alt: "alttext", width:200%>
-    <h1> #BalanceTonVoisin </h1>
-  </div>
-  <div>
-    <div>
-      <%= image_tag "graphique.png", alt: "alttext", width: 400%>
-      <p> Attention ce graphique ne donne aucune information </p>
+  <div class="pl-4 ml-4">
+    <div class="row d-flex justify-content-between align-items-start container-home-top">
+      <div class="col-8 présentation">
+        <div class="d-flex justify-content-left align-items-center">
+          <%= image_tag "logo.png", alt: "alttext", width: 200 %>
+          <h1> #BalanceTonVoisin </h1>
+        </div>
+        <p> Dans le contexte du Covid19, le business de la délation est en plein boom! Ton voisin ne respecte pas le couvre-feu? Ton chat ne porte pas de masque? Dénonce et reçoit des récompenses appropriées! </p>
+        <div class="card-clash-focus">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <%= cl_image_tag User.first.profile_picture, class: " avatar users-avatar user1-avatar"%>
+              <div class="text-success">
+                <p> 128 soutiens <i class="far fa-thumbs-up"></i></p>
+              </div>
+            </div>
+              <h2> Dewey </h2>
+              <h1>⚡️</h1>
+              <h2> Dewey </h2>
+            <div>
+              <%= cl_image_tag User.first.profile_picture, class: " avatar users-avatar user2-avatar"%>
+              <div class="text-danger">
+                <p> 128 soutiens <i class="far fa-thumbs-up"></i></p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="mr-2">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque mi nulla quam nam ut risus, commodo fringilla.</p>
+            </div>
+            <div class="ml-2">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque mi nulla quam nam ut risus, commodo fringilla.</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end pt-3 mt-3 text-secondary">
+            <p>voir commentaires ></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <%= render "devise/shared/login" %>
+      </div>
     </div>
-    <div>
-      <%= render "devise/shared/login" %>
-      <%= link_to "Sign up", new_user_registration_path  %>
+
+
+  <div class="container container-home-bot">
+    <div class="pb-3 pl-0 ml-0 mt-3">
+      <div class="d-flex justify-content-left align-items-center">
+        <h2> Balance ton Voisin c'est:</h2>
+      </div>
+      <div class="row cards-stat">
+        <div class="col-4 list-unstyled">
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-user-lock"></i>
+            <li> 350 voisins incarcérés </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-paw"></i>
+            <li> 150 pangolins sauvés </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-cookie-bite"></i>
+            <li> 30 000 chocolatines </li>
+          </div>
+        </div>
+        <div class="col-4 list-unstyled">
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-virus"></i>
+            <li> 250 virus réduits à neant </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-tree"></i>
+            <li> 1 arbre planté </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-user"></i>
+            <li> 42 français abonnés </li>
+          </div>
+        </div>
+        <div class="col-4 list-unstyled">
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-virus"></i>
+            <li> 250 virus réduits à neant </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-tree"></i>
+            <li> 1 arbre planté </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-user"></i>
+            <li> 42 français abonnés </li>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div>
-    <h2> Balance ton Voisin c'est:</h2>
-
-    <li> 350 voisins incarcérés </li>
-    <li> 150 pangolins sauvés </li>
-    <li> 30 000 chocolatines </li>
-    <li> 250 virus réduits à neant </li>
-    <li> 1 arbre planté </li>
-    <li> 1 Vichy renouvellé </li>
   </div>
 </div>
 
+
+
+
 <% else  %>
-  <h1> patate </h1>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+
+    <%= simple_form_for @publication, html: {class: 'form-inline text-area-container'} do |f| %>
+      <%= f.input :content, label: false, placeholder: "Un problème avec votre voisin ?", input_html: { class: "post-input" }, wrapper_html: { class: "text-area-wrapper"} %>
+      <%= f.submit "Publier", class: "btn btn-flat text-area-button" %>
+    <% end %>
+
+  <h2 class="my-4">Les posts à la une</h2>
+  <div class="cards">
+      <% @publications.reverse.first(3).each do |publication| %>
+        <%= link_to publication_path(publication) do %>
+          <div class="card-home">
+            <div class="user-data">
+              <%= cl_image_tag current_user.profile_picture, class: "avatar-large" %>
+              <div class="username"><%= publication.user.username %>
+              </div>
+            </div>
+            <div class="description">
+            <%= publication.content.truncate(100, separator: ' ') %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to publications_path do %>
+    <div class="d-flex justify-content-end mt-3">
+      <p class="btn btn-ghost">Découvrir plus de posts <i class="far fa-arrow-alt-circle-right"></i> </p>
+    </div>
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <% end  %>
 
