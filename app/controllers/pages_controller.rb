@@ -11,6 +11,12 @@ class PagesController < ApplicationController
     # raise
   end
 
+  def users
+    def show
+    @publications = policy_scope(Publication)
+    end
+  end
+
 
   def resource_name
     @resource_name = :user

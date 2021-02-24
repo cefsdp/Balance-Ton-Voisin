@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   root to: 'pages#home'
   get "components", to: 'pages#components'
@@ -10,5 +9,4 @@ Rails.application.routes.draw do
 
   resources :comments, only: [ :destroy ]
   resources :users, only: [:show]
-
 end
