@@ -23,7 +23,7 @@
 
 	<%= simple_form_for [ @publication, @comment ] do |f| %>
 		<%= f.input :content, label: false %>
-		<%= f.submit "Publier" %>
+		<%= f.submit "Publier", id: "submitnewcoms" %>
 	<% end %>
 
 	<% @comments.each do |comment| %>
