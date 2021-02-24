@@ -183,7 +183,9 @@
   padding: 30px 30px 0px 30px;
   position: relative;
   .users-avatar {
-    width: 90px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
     display: flex;
     justify-content: center;
     bottom: 80px;
