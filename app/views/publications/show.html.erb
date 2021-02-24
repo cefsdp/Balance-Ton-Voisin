@@ -28,10 +28,25 @@
 	<% end %>
 
 
-	<%= simple_form_for [ @publication, @comment ] do |f| %>
-	  <%= f.input :content, label: "Ajouter un commentaire" %>
-	  <%= f.submit "Publier" %>
-	<% end %>
+
+
+<% @comments.each do |comment| %>
+	<p><%= comment.user.username %>, <%= comment.created_at %> </p>
+	<p><%= comment.content %></p>
+  	<% if policy(comment).destroy? %>
+      <%= link_to comment_path(comment), method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+  	<% end %>
+
+<% end %>
+
 
 </div>
+
+
+<%= simple_form_for [ @publication, @comment ] do |f| %>
+  <%= f.input :content, label: "Ajouter un commentaire" %>
+  <%= f.submit "Publier" %>
+<% end %>
 

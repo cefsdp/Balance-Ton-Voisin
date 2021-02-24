@@ -8,10 +8,15 @@
   }
   .card-pb {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 40px;
+    border: 1px solid #8731f5;
     align-items: center;
-    text-align: center;
+
     .text {
       color: #8731f5;
       font-weight: 500;
@@ -20,6 +25,7 @@
     }
   }
   .card-post {
+
     margin-bottom: 20px;
     background-color: white;
     color: black;
@@ -48,17 +54,26 @@
       font-size: 16px;
     }
 
+    .more-comments {
+      padding-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      .coms {
+        color: grey;
+        font-size: 12px;
+        align-self: flex-end;
+      }
+    }
   }
 
-a:hover {
-  text-decoration: none !important;
-}
 
   .card-clash {
     background-color: white;
     color: black;
     padding: 30px 30px 0px 30px;
+
     margin-top: 50px;
+
     border-radius: 40px;
     border: 1px solid #8731f5;
     transition: transform .2s; /* Animation */
@@ -94,6 +109,7 @@ a:hover {
         
       }
     }
+
     .tag {
       display: flex;
       justify-content: center;
@@ -112,6 +128,7 @@ a:hover {
       bottom: 40px;
     }
     .more-comments {
+
       display: flex;
       justify-content: flex-end;
       .coms {
