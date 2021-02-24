@@ -40,7 +40,7 @@ class PublicationsController < ApplicationController
     @publication.destroy
     redirect_to publications_path
   end
-  
+
   private
 
   def publication_params
