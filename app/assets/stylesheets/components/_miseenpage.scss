@@ -11,8 +11,15 @@
     .cardpostcoms{
         flex: 0 0 40%;
         padding-left: 20px;
-        overflow-y: scroll;
         margin-bottom: 12px;
         height: 75vh;
+        display: flex;
+        flex-direction: column;
+        .commentcontainer {
+            padding-bottom: 15px;
+            overflow-y: scroll;
+            /* background: black; */
+            flex-grow: 1;
+        }
     }
 }
