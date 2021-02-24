@@ -31,3 +31,27 @@
         box-shadow: none;
     }
 }
+
+#new_comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  #submitnewcoms {
+      color: white;
+      padding: 8px 24px;
+      border-radius: 20px;
+      background: #8731f5;
+      transition: background 0.3s ease;
+      border: none;
+  }
+  .comment_content {
+      flex-grow: 1;
+      padding-right: 10px;
+      margin-bottom: 0px;
+      #comment_content {
+          border-radius: 20px;
+          height: 40px;
+      }
+  }
+}
