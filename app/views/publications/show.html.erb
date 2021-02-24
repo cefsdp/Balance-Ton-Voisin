@@ -36,6 +36,7 @@
 
 
 		<div class="cardpostcoms">
+			<div class="commentcontainer">
 			<% @comments.each_with_index do |comment, index| %>
 					<div class="comment">
 						<div><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div>
@@ -47,13 +48,14 @@
 									<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 								</span>
 							</div>
-							<div class="comtxt"> <%= comment.content %> </div>
+							<div class="comtext"> <%= comment.content %> </div>
 						</div>
 					</div>
 			<% end %>
+			</div>
 
 			<%= simple_form_for [ @publication, @comment ] do |f| %>
-				<%= f.input :content, label: false, :placeholder => 'Racontez votre histoire !' %>
+				<%= f.input :content, label: false, :placeholder => 'Commentez' %>
 				<%= f.submit "Publier", id: "submitnewcoms" %>
 			<% end %>
 		</div>
