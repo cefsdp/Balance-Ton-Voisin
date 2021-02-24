@@ -50,3 +50,15 @@
   .btn-submit:hover {
     color: white;
   }
+
+  .btn-outline-danger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 8px 24px;
+  }
+
+  .btn-outline-danger p {
+    text-position: center;
+  }
