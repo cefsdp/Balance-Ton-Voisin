@@ -35,15 +35,28 @@
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
       text-decoration: none;
     }
-    .user-data {
+    .posthead{
       display: flex;
-      justify-content: flex-start;
-      .username {
-        padding-left: 15px;
-        font-size: 30px;
-        font-weight: 700;
-        align-items: center;
-        align-self: center;
+      justify-content: space-between;
+      .user-data {
+        display: flex;
+        justify-content: flex-start;
+        .username { 
+          padding-left: 15px;  
+          font-size: 30px;
+          font-weight: 700;
+          align-items: center;
+          align-self: center;
+        }
+      }
+      i {
+        margin-right: 10px;
+      }
+      .delete{
+        color: red;
+      }
+      .edit{
+        color: #8731f5;
       }
     }
     .description {
@@ -51,7 +64,6 @@
       text-align: justify;
       font-size: 16px;
     }
-
     .more-comments {
       padding-top: 20px;
       display: flex;
@@ -138,12 +150,7 @@
       justify-content: center;
       font-size: 30px;
       font-weight: 700;
-      .username1 {
 
-      }
-      .username2 {
-
-      }
     }
     .tag {
       display: flex;
@@ -256,6 +263,7 @@
       border: 1px solid #8631f559;
       margin-left: 10px;
       padding: 10px 10px 10px 10px;
+      max-width: auto;
       flex-grow: 1;
       .comusername{
         display: flex;
@@ -311,3 +319,52 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
+
+  .card-post-show {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    height: 150px;
+    border-radius: 40px;
+    border: 1px solid #8731f5;
+    transition: transform .2s; /* Animation */
+    &:hover {
+      transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      text-decoration: none;
+    }
+    .description {
+      padding-top: 20px;
+      text-align: justify;
+      font-size: 16px;
+    }
+    .postavatar {
+      position: relative;
+      right: 40px;
+      top: 10px;
+    }
+    .username {
+      position: relative;
+      bottom: 40px;
+      left: 20px;
+      font-size: 18px ;
+      font-weight: 700;
+    }
+    .description {
+      position: relative;
+      bottom: 60px;
+      left: 20px;
+    }
+  }
+  .ghostup {
+    opacity: 0.6;
+    position: relative;
+    bottom: 10px;
+    right: 50px;
+  }
+  .ghostdown {
+    opacity: 0.6;
+    position: relative;
+    top: 10px;
+    right: 50px;
+  }
+
