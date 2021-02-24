@@ -1,23 +1,20 @@
-<div class="container">
+<div class="container pt-4">
 
 	<div class="card-post mt-4">
 		<div class="text-center mb-4">
-		<div class="user-data">
-			<%= cl_image_tag current_user.profile_picture, class: "avatar-large" %>
-			<div class="username"><%= @publication.user.username %></div>
-		</div>
-		<div class="description">
-			<%= @publication.content %>
-		</div>
-		<% if policy(@publication).edit? %>
-			<%= link_to edit_publication_path(@publication) do %>
-				<i class="fas fa-edit"></i>
-			<% end %>
-		<% elsif policy(@publication).destroy? %>
-			<%= link_to publication_path(@publication), method: :delete do %>
-			<i class="far fa-trash-alt"></i>
-			<% end %>
-		<% end %>
+			<div class="posthead">
+				<span class="user-data">
+					<%= cl_image_tag current_user.profile_picture, class: "avatar-large" %>
+					<div class="username"><%= @publication.user.username %></div>
+				</span>
+				<span>
+					<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="fas fa-edit edit"></i><% end %><% end %></span>
+					<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
+				</span>
+			</div>
+			<div class="description">
+				<%= @publication.content %>
+			</div>
 		</div>
 	</div>
 
