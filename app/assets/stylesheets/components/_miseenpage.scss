@@ -4,12 +4,12 @@
 .bodypostshow{
     display: flex;
     .cardpostshow{
-        flex: 0 0 40%;
+        flex: 0 0 60%;
         height: 75vh;
         align-self: center;
     }
     .cardpostcoms{
-        flex: 0 0 50%;
+        flex: 0 0 40%;
         padding-left: 20px;
         overflow-y: scroll;
         margin-bottom: 12px;

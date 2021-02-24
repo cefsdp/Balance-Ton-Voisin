@@ -4,10 +4,16 @@
 		<div class="cardpostshow">
 
 			<div class="card-post">
-				<div class="user-data">
-					<div class="postavatar"><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div>
-					<div class="username"><%= @publication.user.username %>
+				<div class="posthead">
+					<div class="user-data">
+						<div><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div> 
+						<div class="username"><%= @publication.user.username %></div>
 					</div>
+					<span>
+						<span class="comcreation"><%= @publication.created_at %></span>
+						<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
+						<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
+					</span>
 				</div>
 				<div class="description">
 				<%= @publication.content.truncate(300, separator: ' ') %>
