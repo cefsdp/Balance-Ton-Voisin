@@ -1,1 +1,33 @@
 // Specific CSS for your home-page
+.form-login {
+  width: 400px;
+  background: white;
+  padding: 10px 20px;
+  margin-top: 70px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding-left: 135px;
+  }
+  .btn {
+    width: 350px;
+    margin-bottom: 20px
+  }
+}
+
+.form-inputs {
+  width: 350px;
+}
+
+.container-home-top {
+  width: 100%;
+  height: 100%;
+}
+
+.container-home-bot {
+  margin-top: 185px;
+  height: 100%;
+}
