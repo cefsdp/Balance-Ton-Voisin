@@ -1,32 +1,73 @@
 
 <% if current_user == nil %>
-<div class="container">
-  <div class="d-flex justify-content-left align-items-center">
-    <%= image_tag "logo.png", alt: "alttext", width:200%>
-    <h1> #BalanceTonVoisin </h1>
-  </div>
-  <div>
-    <div>
-      <%= image_tag "graphique.png", alt: "alttext", width: 400%>
-      <p> Attention ce graphique ne donne aucune information </p>
+  <div class="container">
+
+
+    <div class="row d-flex justify-content-between align-items-start">
+      <div class="col-8 présentation">
+        <div class="d-flex justify-content-left align-items-center">
+          <%= image_tag "logo.png", alt: "alttext", width: 200 %>
+          <h1> #BalanceTonVoisin </h1>
+        </div>
+        <p> Dans le contexte du Covid19, le business de la délation est en plein boom! <br> Ton voisin ne respecte pas le couvre-feu? Ton chat ne porte pas de masque? <br> Dénonce et reçoit des récompenses appropriées! </p>
+        <h1>  Clash Focus </h1>
+      </div>
+      <div class="col-4">
+        <%= render "devise/shared/login" %>
+      </div>
     </div>
-    <div>
-      <%= render "devise/shared/login" %>
-      <%= link_to "Sign up", new_user_registration_path  %>
+  <div class="container">
+    <div class="pb-3 pl-0 ml-0 mt-3">
+      <div class="d-flex justify-content-left align-items-center">
+        <h2> Balance ton Voisin c'est:</h2>
+      </div>
+      <div class="row cards-stat">
+        <div class="col-4 list-unstyled">
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-user-lock"></i>
+            <li> 350 voisins incarcérés </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-paw"></i>
+            <li> 150 pangolins sauvés </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-cookie-bite"></i>
+            <li> 30 000 chocolatines </li>
+          </div>
+        </div>
+        <div class="col-4 list-unstyled">
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-virus"></i>
+            <li> 250 virus réduits à neant </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-tree"></i>
+            <li> 1 arbre planté </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-user"></i>
+            <li> 42 français abonnés </li>
+          </div>
+        </div>
+        <div class="col-4 list-unstyled">
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-virus"></i>
+            <li> 250 virus réduits à neant </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-tree"></i>
+            <li> 1 arbre planté </li>
+          </div>
+          <div class="card-stat-home d-flex flex-column justify-content-center align-items-center">
+            <i class="fas fa-user"></i>
+            <li> 42 français abonnés </li>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div>
-    <h2> Balance ton Voisin c'est:</h2>
-
-    <li> 350 voisins incarcérés </li>
-    <li> 150 pangolins sauvés </li>
-    <li> 30 000 chocolatines </li>
-    <li> 250 virus réduits à neant </li>
-    <li> 1 arbre planté </li>
-    <li> 1 Vichy renouvellé </li>
-  </div>
-</div>
 
 
 

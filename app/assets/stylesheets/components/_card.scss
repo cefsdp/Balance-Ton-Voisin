@@ -8,7 +8,6 @@
   }
   .card-pb {
     display: flex;
-
     justify-content: space-between;
     flex-direction: row;
     background-color: white;
@@ -16,7 +15,6 @@
     border-radius: 40px;
     border: 1px solid #8731f5;
     align-items: center;
-
     .text {
       color: #8731f5;
       font-weight: 500;
@@ -24,8 +22,8 @@
       font-family: 'Poppins', sans-serif;
     }
   }
-  .card-post {
 
+  .card-post {
     margin-bottom: 20px;
     background-color: white;
     color: black;
@@ -40,8 +38,8 @@
     .user-data {
       display: flex;
       justify-content: flex-start;
-      .username { 
-        padding-left: 15px;  
+      .username {
+        padding-left: 15px;
         font-size: 30px;
         font-weight: 700;
         align-items: center;
@@ -106,7 +104,7 @@
 
       }
       .username2 {
-        
+
       }
     }
 
@@ -139,8 +137,31 @@
     }
   }
 
+.cards-stat {
+  margin-left: 60px;
+}
+.card-stat-home {
+  background-color: grey;
+  margin: 10px;
+  padding: 5px;
+  width: 240px;
+  height: 190px;
+  border-radius: 50px;
+  opacity: 0.4;
+}
+.card-stat-home:hover {
+  opacity: 0.6;
+  transform: scale(1.05);
+}
 
 
+.card-stat-home i {
+    font-size: 40px;
+}
+
+.card-stat-home li {
+    text-position: center;
+}
 
 
   .card-category {
@@ -165,40 +186,68 @@
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
   }
-  
-  
+
+  .comment{
+    padding-top: 10px;
+    display: flex;
+    .combox {
+      background-color: white;
+      border-radius: 20px;
+      border: 1px solid #8631f559;
+      margin-left: 10px;
+      padding: 10px 10px 10px 10px;
+      flex-grow: 1;
+      .comusername{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 900;
+        font-size: 18px;
+        i {
+          color: red;
+          margin-right: 10px;
+        }
+        .comcreation {
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+      .comtext {
+        color: black;
+      }
+    }
+  }
+
   // Smallest device
   @media (min-width: 100px) and (max-width: 575px) {
     .cards {
       grid-template-columns: 1fr;
     }
   }
-  
+
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 576px) {
     .cards {
       grid-template-columns: 1fr;
     }
   }
-  
+
   // Medium devices (tablets, 768px and up)
   @media (min-width: 768px) {
     .cards {
       grid-template-columns: 1fr 1fr;
     }
   }
-  
+
   // Large devices (desktops, 992px and up)
   @media (min-width: 992px) {
     .cards {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
-  
+
   // Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1200px) {
     .cards {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
-  
