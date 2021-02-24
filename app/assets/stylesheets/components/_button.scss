@@ -7,13 +7,13 @@
     opacity: 0.6;
     transition: opacity 0.3s ease;
   }
-  
+
   .btn-ghost:hover {
     color: #8731F5;
     border: 1px solid #8731F5;
     opacity: 1;
   }
-  
+
   .btn-flat {
     color: white;
     padding: 8px 24px;
@@ -21,9 +21,28 @@
     background: #8731f5;
     transition: background 0.3s ease;
   }
-  
+
   .btn-flat:hover {
     background: #7138ba;
     color: white;
   }
-  
+
+  .btn-outline-secondary {
+    border-radius: 40px;
+  }
+
+  .btn-signup {
+    border-radius: 5px;
+    border: solid 1px #8731f5;
+    color: #8731f5;
+  }
+
+  .btn-submit {
+    border-radius: 5px;
+    background-color: #8731f5;
+    color: white;
+  }
+
+  .btn-submit:hover {
+    color: white;
+  }
