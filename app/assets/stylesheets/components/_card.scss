@@ -8,7 +8,6 @@
   }
   .card-pb {
     display: flex;
-
     justify-content: space-between;
     flex-direction: row;
     background-color: white;
@@ -16,7 +15,6 @@
     border-radius: 40px;
     border: 1px solid #8731f5;
     align-items: center;
-
     .text {
       color: #8731f5;
       font-weight: 500;
@@ -24,8 +22,8 @@
       font-family: 'Poppins', sans-serif;
     }
   }
-  .card-post {
 
+  .card-post {
     margin-bottom: 20px;
     background-color: white;
     color: black;
@@ -166,8 +164,6 @@
 }
 
 
-
-
   .card-category {
     background-size: cover;
     background-position: center;
@@ -191,6 +187,35 @@
     }
   }
 
+  .comment{
+    padding-top: 10px;
+    display: flex;
+    .combox {
+      background-color: white;
+      border-radius: 20px;
+      border: 1px solid #8631f559;
+      margin-left: 10px;
+      padding: 10px 10px 10px 10px;
+      flex-grow: 1;
+      .comusername{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 900;
+        font-size: 18px;
+        i {
+          color: red;
+          margin-right: 10px;
+        }
+        .comcreation {
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+      .comtext {
+        color: black;
+      }
+    }
+  }
 
   // Smallest device
   @media (min-width: 100px) and (max-width: 575px) {
@@ -226,4 +251,3 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
-
