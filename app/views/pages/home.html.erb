@@ -48,26 +48,35 @@
 
 
 
-<div class="container mt-5">
-  <h2 class="mb-4">Les posts à la une</h2>
 
-<div class="cards">
-    <% @publications.reverse.each do |publication| %>
-      <%= link_to publication_path(publication) do %>
-        <div class="card-post">
-          <div class="user-data">
-            <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
-            <div class="username"><%= publication.user.username %>
+<div class="container mt-5">
+
+    <%= simple_form_for @publication, html: {class: 'form-inline card-pb'} do |f| %>
+      <%= f.input :content, label: false, placeholder: "Un problème avec votre voisin ?", class: "text form-control-post" %>
+      <%= f.submit "Publier", class: "btn btn-flat" %>
+    <% end %>
+
+  <h2 class="my-4">Les posts à la une</h2>
+  <div class="cards">
+      <% @publications.reverse.first(3).each do |publication| %>
+        <%= link_to publication_path(publication) do %>
+          <div class="card-post">
+            <div class="user-data">
+              <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm"> 
+              <div class="username"><%= publication.user.username %>
+              </div>
+            </div>
+            <div class="description">
+            <%= publication.content.truncate(100, separator: ' ') %>
             </div>
           </div>
-          <div class="description">
-          <%= publication.content.truncate(100, separator: ' ') %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+    </div>
+    <%= link_to publications_path do %>
+      <p class="text-right">Découvrir plus de posts <i class="far fa-arrow-alt-circle-right"></i> </p>
     <% end %>
   </div>
-</div>
 
 
 

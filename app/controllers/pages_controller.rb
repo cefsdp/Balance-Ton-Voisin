@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def home
     @disable_nav = true if current_user == nil
     @publications = policy_scope(Publication)
+    @publication = Publication.new
     # raise
   end
 
