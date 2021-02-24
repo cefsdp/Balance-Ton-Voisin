@@ -27,14 +27,14 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     authorize @comment
     @comment.update(comment_params)
-    redirect_to publications_path
+    redirect_to publication_path(@comment.publication)
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     authorize @comment
     @comment.destroy
-    redirect_to publications_path
+    redirect_to publication_path(@comment.publication)
   end
 
   private
