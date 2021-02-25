@@ -67,6 +67,9 @@
       font-size: 16px;
       word-break: break-all;
     }
+    .showdesc {
+      word-break: normal;
+    }
     .more-comments {
       padding-top: 20px;
       display: flex;
@@ -107,7 +110,7 @@
       padding-top: 20px;
       text-align: justify;
       font-size: 16px;
-      word-break: break-all;
+      word-break: break-word;
     }
   }
   .card-clash {
@@ -235,7 +238,6 @@
 }
 
 .card-stat-home li {
-    text-position: center;
     color: rgba(155, 77, 255, 0.66);
 }
 
@@ -290,7 +292,6 @@
       }
       .comtext {
         color: black;
-        word-break: break-all;
       }
     }
   }
@@ -329,7 +330,6 @@
       position: relative;
       bottom: 60px;
       left: 20px;
-      word-break: break-all;
     }
   }
   .ghostup {
