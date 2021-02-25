@@ -39,25 +39,29 @@
 
 		<div class="cardpostcoms">
 			<div class="commentcontainer">
-			<% @comments.each_with_index do |comment, index| %>
-					<div class="comment">
-						<%= link_to user_path(comment.user) do  %>
-							<div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
-						<% end %>
-							<div class="combox">
-							<div class="comusername">
+				<% if @comments.count == 0 %>
+					<div class="pitimsg"> Soyez le premier à commenter la publication de <%= @publication.user.username %></div>
+				<% else %>
+					<% @comments.each_with_index do |comment, index| %>
+							<div class="comment">
 								<%= link_to user_path(comment.user) do  %>
-									<span><%= comment.user.username %></span>
-									<span>
+									<div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
 								<% end %>
-									<span class="comcreation"><%= comment.created_at %></span>
-									<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
-								</span>
+									<div class="combox">
+									<div class="comusername">
+										<%= link_to user_path(comment.user) do  %>
+											<span><%= comment.user.username %></span>
+											<span>
+										<% end %>
+											<span class="comcreation"><%= comment.created_at %></span>
+											<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
+										</span>
+									</div>
+									<div class="comtext"> <%= comment.content %> </div>
+								</div>
 							</div>
-							<div class="comtext"> <%= comment.content %> </div>
-						</div>
-					</div>
-			<% end %>
+					<% end %>
+				<% end %>
 			</div>
 
 			<%= simple_form_for [ @publication, @comment ] do |f| %>
