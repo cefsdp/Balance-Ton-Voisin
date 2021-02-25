@@ -23,16 +23,11 @@
                 required: true,
                 label: "Confirmation de mot de passe",
                 input_html: { autocomplete: "new-password" } %>
-
-    <%= f.input :description,
-                required: false,
-                hint: "Décrivez-vous en quelques mots !" %>
-
     <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Créer mon compte" %>
+          <%= f.button :submit, "Créer mon compte", class:"btn btn-submit text-decoration-none" %>
   </div>
 <% end %>
 
