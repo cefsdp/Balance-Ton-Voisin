@@ -63,6 +63,7 @@
       padding-top: 20px;
       text-align: justify;
       font-size: 16px;
+      word-break: break-all;
     }
     .more-comments {
       padding-top: 20px;
@@ -72,6 +73,7 @@
         color: grey;
         font-size: 12px;
         align-self: flex-end;
+        word-break: break-all;
       }
     }
   }
@@ -102,17 +104,7 @@
       padding-top: 20px;
       text-align: justify;
       font-size: 16px;
-    }
-
-    .more-comments {
-      padding-top: 20px;
-      display: flex;
-      justify-content: flex-end;
-      .coms {
-        color: grey;
-        font-size: 12px;
-        align-self: flex-end;
-      }
+      word-break: break-all;
     }
   }
   .card-clash {
@@ -322,6 +314,7 @@
       position: relative;
       bottom: 60px;
       left: 20px;
+      word-break: break-all;
     }
   }
   .ghostup {
