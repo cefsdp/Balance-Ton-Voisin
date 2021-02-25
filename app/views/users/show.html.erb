@@ -1,21 +1,32 @@
 
-<div class="banner text-center">
-	<%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
-    <h1><%= @user.username %></h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to root_path, class: "navbar-brand" do %>
+  <div class="d-flex text-left align-items-center">
+    <%= image_tag "logo.png", alt: "alttext"%>
+    <h3 class="pt-2 title-website"> #Balancetonvoisin</h3>
+  </div>
+  <% end %>
+ </div>
+
+<div class="user-profile-navbar">
+<div class="user-profile-picture text-center">
+		<%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
+	    <h1 class="pt-2"><%= @user.username %></h1>
+    </div>
 </div>
 
 
-<div class="row m-5 p-5">
-<div class="col-4">
+
+<div class="profile-content">
+<div class="col-4 pl-5 user-infos">
 	<h2 class="mb-4">Infos</h2>
 	<div class="card-post">
 		<p> <%= @publications.count %> publications</p>
 		<p> <%= @comments.count %> participations </p>
-		<p>0 clashes gagnés</p>
+		<p class="mb-0">0 clashes gagnés</p>
 	</div>
 </div>
-	<div class="col-8">
-		<h2 class="mb-4">Publications</h2>
+	<div class="col-8 pr-5 py-2 user-publications">
 		<% @publications.reverse.each do |publication| %>
 			<%= link_to publication_path(publication) do %>
 				<div class="card-post">
