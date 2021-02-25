@@ -141,7 +141,7 @@
       <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button" %>
     <% end %>
 
-  <h2 class="my-4">Les plaintes les plus chaudes de ta région</h2>
+  <h2 class="my-4"><strong>Les plaintes les plus chaudes de ta région</strong></h2>
   <div class="cards">
       <% @publications.reverse.first(3).each do |publication| %>
         <%= link_to publication_path(publication) do %>
