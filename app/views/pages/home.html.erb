@@ -133,7 +133,7 @@
         <%= link_to publication_path(publication) do %>
           <div class="card-home">
             <div class="user-data">
-              <%= cl_image_tag current_user.profile_picture, class: "avatar-large" %>
+              <%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %>
               <div class="username"><%= publication.user.username %>
               </div>
             </div>
