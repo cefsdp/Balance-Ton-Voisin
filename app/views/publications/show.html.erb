@@ -48,8 +48,9 @@
 							<div class="comusername">
 								<%= link_to user_path(comment.user) do  %>
 									<span><%= comment.user.username %></span>
-									<span>
+								
 								<% end %>
+								<span>
 									<span class="comcreation"><%= comment.created_at %></span>
 									<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 								</span>
