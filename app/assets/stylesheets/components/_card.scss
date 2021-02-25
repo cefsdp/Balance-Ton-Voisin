@@ -13,7 +13,7 @@
     background-color: white;
     padding: 15px 30px;
     border-radius: 40px;
-    border: 1px solid #8731f5;
+    border: 1px solid rgba(212, 178, 255, 0.66);
     align-items: center;
     .text {
       color: #8731f5;
@@ -29,7 +29,7 @@
     color: black;
     padding: 30px;
     border-radius: 40px;
-    border: 1px solid #8731f5;
+    border: 1px solid rgba(212, 178, 255, 0.66);
     transition: transform .2s; /* Animation */
     &:hover {
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -41,8 +41,8 @@
       .user-data {
         display: flex;
         justify-content: flex-start;
-        .username { 
-          padding-left: 15px;  
+        .username {
+          padding-left: 15px;
           font-size: 30px;
           font-weight: 700;
           align-items: center;
@@ -81,7 +81,7 @@
     color: black;
     padding: 30px;
     border-radius: 40px;
-    border: 1px solid #8731f5;
+    border: 1px solid rgba(212, 178, 255, 0.66);
     transition: transform .2s; /* Animation */
     &:hover {
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -123,7 +123,7 @@
     margin-top: 50px;
 
     border-radius: 40px;
-    border: 1px solid #8731f5;
+    border: 1px solid rgba(212, 178, 255, 0.66);
     transition: transform .2s; /* Animation */
     &:hover {
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -184,7 +184,7 @@
   margin-top: 40px;
   border-radius: 20px;
   height: 300px;
-  border: 1px solid #8631f559;
+  border: 1px solid rgba(212, 178, 255, 0.66);
   background-color: white;
   color: black;
   padding: 30px 30px 0px 30px;
@@ -262,7 +262,7 @@
     .combox {
       background-color: white;
       border-radius: 20px;
-      border: 1px solid #8631f559;
+      border: 1px solid rgba(212, 178, 255, 0.66);
       margin-left: 10px;
       padding: 10px 10px 10px 10px;
       max-width: 80%;
@@ -295,7 +295,7 @@
     padding: 10px;
     height: 150px;
     border-radius: 40px;
-    border: 1px solid #8731f5;
+    border: 1px solid rgba(212, 178, 255, 0.66);
     transition: transform .2s; /* Animation */
     &:hover {
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */

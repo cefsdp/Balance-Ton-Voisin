@@ -1,6 +1,6 @@
 .btn-ghost {
     color: #8731F5;
-    border: 1px solid #8731F5;
+    border: 1px solid rgba(212, 178, 255, 0.66);
     padding: 8px 24px;
     border-radius: 50px;
     font-weight: lighter;
@@ -10,7 +10,7 @@
 
   .btn-ghost:hover {
     color: #8731F5;
-    border: 1px solid #8731F5;
+    border: 1px solid #8731f5;
     opacity: 1;
     text-decoration: none;
   }
@@ -34,7 +34,7 @@
 
   .btn-signup {
     border-radius: 5px;
-    border: solid 1px #8731f5;
+    border: solid 1px rgba(212, 178, 255, 0.66);
     color: #8731f5;
     padding-top: 10px;
     padding-bottom: 10px;
