@@ -7,7 +7,7 @@
 				<div class="posthead">
 					<%= link_to user_path(@publication.user) do  %>
 					<div class="user-data">
-						<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div> 
+						<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div>
 						<div class="username"><%= @publication.user.username %></div>
 					</div>
 					<% end %>
@@ -42,7 +42,7 @@
 			<% @comments.each_with_index do |comment, index| %>
 					<div class="comment">
 						<%= link_to user_path(comment.user) do  %>
-							<div><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div>
+							<div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
 						<% end %>
 							<div class="combox">
 							<div class="comusername">
