@@ -3,6 +3,8 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
     a {
+      display: flex;
+      align-items: stretch;
       text-decoration: none;
     }
   }
@@ -80,6 +82,7 @@
 
   .card-home {
     background-color: white;
+    flex-grow: 1;
     color: black;
     padding: 30px;
     border-radius: 40px;
