@@ -20,6 +20,7 @@ class PublicationsController < ApplicationController
     @publication = Publication.new(publication_params)
     authorize @publication
     @publication.user = current_user
+    @publication.user.score += 3 if @publication.save!
     redirect_to publications_path if @publication.save!
   end
 
@@ -39,6 +40,7 @@ class PublicationsController < ApplicationController
     @publication = Publication.find(params[:id])
     authorize @publication
     @publication.destroy
+    @publication.user.score -= 3
     redirect_to publications_path
   end
 
