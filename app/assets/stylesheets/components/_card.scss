@@ -205,8 +205,10 @@
   margin-left: 60px;
 }
 .card-stat-home {
-  background-color: grey;
+  background-color: white;
+  border: 1px solid rgba(155, 77, 255, 0.66);
   margin: 10px;
+  margin-left: -25px;
   padding: 5px;
   width: 240px;
   height: 190px;
@@ -216,15 +218,25 @@
 .card-stat-home:hover {
   opacity: 0.6;
   transform: scale(1.05);
+  border: 1px solid #8731f5;
+  i {
+    color: #8731f5;
+  }
+  li {
+    color: #8731f5;
+  }
 }
+
 
 
 .card-stat-home i {
     font-size: 40px;
+    color:rgba(155, 77, 255, 0.66);
 }
 
 .card-stat-home li {
     text-position: center;
+    color: rgba(155, 77, 255, 0.66);
 }
 
 
@@ -332,6 +344,8 @@
     top: 10px;
     right: 50px;
   }
+
+
 
 
   // Smallest device
