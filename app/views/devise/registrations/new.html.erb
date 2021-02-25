@@ -23,9 +23,11 @@
                 required: true,
                 label: "Confirmation de mot de passe",
                 input_html: { autocomplete: "new-password" } %>
+
     <%= f.input :description,
                 required: false,
                 hint: "Décrivez-vous en quelques mots !" %>
+
     <%= f.input :photo, as: :file %>
   </div>
 

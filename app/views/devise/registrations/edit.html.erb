@@ -29,11 +29,8 @@
     <%= f.input :current_password,
                 hint: "Nous avons besoin de votre mot de passe actuel pour modifier vos informations",
                 required: true,
-                input_html: { autocomplete: "current-password" },
-                label: "Mot de passe actuel" %>
-    <%= f.input :description,
-                required: false,
-                hint: "Décrivez-vous en quelques mots !" %>
+                input_html: { autocomplete: "current-password" } %>
+
     <%= f.input :photo, as: :file %>
   </div>
 

@@ -15,6 +15,8 @@ class CommentsController < ApplicationController
     authorize @comment
     @comment.user = current_user
     @comment.publication = @publication
+    @comment.user.score += 2 if @comment.save!
+    @comment.user.save!
     redirect_to publication_path(@publication) if @comment.save!
   end
 
@@ -33,12 +35,14 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     authorize @comment
+    @comment.user.score -= 2
+    @comment.user.score.save!
     @comment.destroy
     redirect_to publication_path(@comment.publication)
   end
 
   private
-  
+
   def comment_params
     params.require(:comment).permit(:content, :user, :publication)
   end
