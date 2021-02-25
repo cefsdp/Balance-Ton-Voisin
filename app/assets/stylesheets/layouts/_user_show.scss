@@ -1,0 +1,21 @@
+.profile-content {
+	margin: 160px 0 0 0;
+	padding: 0 0px;
+	width: 100%;
+	position: relative;
+	height: calc(100vh - 421px);
+}
+
+.user-infos {
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+.user-publications {
+	position: absolute;
+	top:0;
+	right:0;
+	height: calc(100vh - 421px);
+	overflow-y: scroll;
+}
