@@ -38,9 +38,10 @@
 				<div class="card-post">
 					<div class="posthead">
 						<div class="user-data">
-							<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div> 
+							<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
 							<div class="username"><%= publication.user.username %></div>
 						</div>
+			<div class="text-secondary pt-3"><%= publication.created_at %></div>
 					</div>
 					<div class="description">
 						<%= publication.content.truncate(300, separator: ' ') %>
