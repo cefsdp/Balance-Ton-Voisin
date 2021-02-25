@@ -20,6 +20,13 @@
             overflow-y: scroll;
             /* background: black; */
             flex-grow: 1;
+            .pitimsg {
+                padding-top: 50%;
+                font-size: 20px;
+                font-style: oblique;
+                text-align: center;
+                color: lightgrey;
+            }
         }
     }
 }
