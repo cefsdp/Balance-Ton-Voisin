@@ -11,7 +11,14 @@
 <div class="user-profile-navbar">
 <div class="user-profile-picture text-center">
 		<%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
-	    <h1 class="pt-2"><%= @user.username %></h1>
+	    <h1 class="pt-2"><%= @user.username %>
+            <% if @user == current_user %>
+	    	<%= link_to edit_user_registration_path(@user) do  %>
+	    	  <i class="far fa-edit edit"></i>
+	    	  <% end %>
+	    	 <% end %>
+
+	    </h1>
     </div>
 </div>
 
