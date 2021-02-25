@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   #validates :username, presence: true
-  #validates :username, uniqueness: true
-  #validates :username, length: { minimum: 3 }
+  validates :username, uniqueness: true
+  validates :username, length: { minimum: 3 }
   def profile_picture
     if photo.attached?
       photo.key
