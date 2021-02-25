@@ -31,12 +31,6 @@
 			</div> -->
 		</div>
 
-
-
-
-
-
-
 		<div class="cardpostcoms">
 			<div class="commentcontainer">
 				<% if @comments.count == 0 %>
@@ -49,10 +43,12 @@
 								<% end %>
 									<div class="combox">
 									<div class="comusername">
-										<%= link_to user_path(comment.user) do  %>
-											<span><%= comment.user.username %></span>
-											<span>
-										<% end %>
+										<span>
+											<%= link_to user_path(comment.user) do  %>
+												<%= comment.user.username %>
+											<% end %>
+										</span>
+										<span>
 											<span class="comcreation"><%= comment.created_at %></span>
 											<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 										</span>
