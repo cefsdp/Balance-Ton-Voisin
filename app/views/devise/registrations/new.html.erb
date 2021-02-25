@@ -18,6 +18,8 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :description,
+                required: false %>
     <%= f.input :photo, as: :file %>
   </div>
 
