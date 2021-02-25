@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     authorize @comment
     @comment.user.score -= 2
-    @comment.user.score.save!
+    @comment.user.save!
     @comment.destroy
     redirect_to publication_path(@comment.publication)
   end
