@@ -3,12 +3,14 @@
 	<div class="bodypostshow">
 		<div class="cardpostshow">
 
-			<div class="card-post">
+			<div class="card-post post-show">
 				<div class="posthead">
+					<%= link_to user_path(@publication.user) do  %>
 					<div class="user-data">
 						<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div> 
 						<div class="username"><%= @publication.user.username %></div>
 					</div>
+					<% end %>
 					<span>
 						<span class="comcreation"><%= @publication.created_at %></span>
 						<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
@@ -39,11 +41,15 @@
 			<div class="commentcontainer">
 			<% @comments.each_with_index do |comment, index| %>
 					<div class="comment">
-						<div><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div>
+						<%= link_to user_path(comment.user) do  %>
+							<div><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div>
+						<% end %>
 							<div class="combox">
 							<div class="comusername">
-								<span><%= comment.user.username %></span>
-								<span>
+								<%= link_to user_path(comment.user) do  %>
+									<span><%= comment.user.username %></span>
+									<span>
+								<% end %>
 									<span class="comcreation"><%= comment.created_at %></span>
 									<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 								</span>
