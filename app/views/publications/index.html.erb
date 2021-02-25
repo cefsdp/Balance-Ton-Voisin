@@ -1,13 +1,18 @@
 <div class="container my-5">
-	<h1 class="mb-4">Les dernières plaintes</h1>
+    <%= simple_form_for @publication, html: {class: 'form-inline text-area-container'} do |f| %>
+      <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input" }, wrapper_html: { class: "text-area-wrapper"} %>
+      <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button" %>
+    <% end %>
+	<h2 class="my-4"><strong>Les dernières plaintes</strong></h2>
 	<% @publications.reverse.each do |publication| %>
 		<%= link_to publication_path(publication) do %>
 			<div class="card-post">
 				<div class="posthead">
 					<div class="user-data">
-						<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
-						<div class="username"><%= publication.user.username %></div>
+  						<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
+  						<div class="username"><%= publication.user.username %></div>
 					</div>
+          <div class="text-secondary pt-3"><%= publication.created_at %></div>
 				</div>
 				<div class="description">
 					<%= publication.content.truncate(300, separator: ' ') %>
