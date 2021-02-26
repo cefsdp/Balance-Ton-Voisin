@@ -1,0 +1,2 @@
+class ClashRequest < ApplicationRecord
+end
