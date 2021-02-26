@@ -42,11 +42,14 @@
 
 		    <% @clash_requests.each do |request| %>
               <% if request.user == current_user %>
-                <p> <%= request %> </p>
+                <h5> <%= request.user.username %> </h5>
+                <p> <%= request.content %> </p>
               <% end %>
 
               <% if @publication.user == current_user %>
-                <p> <%= request %> </p>
+                <h5> <%= request.user.username %> </h5>
+                <p> <%= request.content %> </p>
+
               <% end %>
 
 
