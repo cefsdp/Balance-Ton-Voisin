@@ -29,10 +29,29 @@
 					<div class="description"><%= @publication.content %></div>
 				</div>
 			</div> -->
+			<% if @publication.user != current_user %>
 
-			<%= link_to new_publication_clash_request_path(@publication) do %>
-			<h1>Clasher</h1>
+				<%= link_to new_publication_clash_request_path(@publication) do %>
+				<h1>Clasher</h1>
+				<% end %>
 			<% end %>
+
+			<% if @publication.user == current_user %>
+
+			<% end %>
+
+		    <% @clash_requests.each do |request| %>
+              <% if request.user == current_user %>
+                <p> <%= request %> </p>
+              <% end %>
+
+              <% if @publication.user == current_user %>
+                <p> <%= request %> </p>
+              <% end %>
+
+
+		    <% end %>
+
 
 		</div>
 

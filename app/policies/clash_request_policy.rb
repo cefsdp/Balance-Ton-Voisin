@@ -5,11 +5,6 @@ class ClashRequestPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-  	true if record.user == user
-  	true if record.publication.user == user
-  end
-
   def create?
     true
   end

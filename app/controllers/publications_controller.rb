@@ -9,6 +9,7 @@ class PublicationsController < ApplicationController
     authorize @publication
     @comments = Comment.where(publication_id: @publication)
     @comment = Comment.new
+    @clash_requests = ClashRequest.where(publication_id: @publication)
   end
 
   def new
