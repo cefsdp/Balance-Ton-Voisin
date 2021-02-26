@@ -12,7 +12,7 @@
   						<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
   						<div class="username"><%= publication.user.username %></div>
 					</div>
-          <div class="text-secondary pt-3"><%= publication.created_at %></div>
+          <div class="text-secondary pt-3"><%= publication.created_at.strftime("%d/%m/%Y à %H:%M") %></div>
 				</div>
 				<div class="description">
 					<%= publication.content.truncate(300, separator: ' ') %>

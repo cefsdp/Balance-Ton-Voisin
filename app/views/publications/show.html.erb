@@ -12,7 +12,7 @@
 					</div>
 					<% end %>
 					<span>
-						<span class="comcreation"><%= @publication.created_at %></span>
+						<span class="comcreation"><%= @publication.created_at.strftime("%d/%m/%Y à %H:%M") %></span>
 						<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
 						<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
 					</span>
@@ -49,7 +49,7 @@
 											<% end %>
 										</span>
 										<span>
-											<span class="comcreation"><%= comment.created_at %></span>
+											<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></span>
 											<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 										</span>
 									</div>
