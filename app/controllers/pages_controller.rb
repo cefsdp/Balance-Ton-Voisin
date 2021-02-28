@@ -7,8 +7,8 @@ class PagesController < ApplicationController
   def home
     @disable_nav = true if current_user == nil
     @publications = policy_scope(Publication)
+    @hotpublications = Publication.joins(:comments).group("publications.id").order("count(publications.id)")
     @publication = Publication.new
-    # raise
   end
 
   def users
@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     @publications = policy_scope(Publication)
     end
   end
-
 
   def resource_name
     @resource_name = :user
