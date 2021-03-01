@@ -33,17 +33,16 @@
 
 
 .profile-description {
-  padding-top: 120px;
-  padding-left: 450px;
-  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-content {
-  position: fixed;
-  margin-top: 230px;
-  padding: 0 0px;
   width: 100%;
   position: relative;
+  margin-top: 20px;
 }
 
 #edit-profile {
