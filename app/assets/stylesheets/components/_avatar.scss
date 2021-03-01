@@ -12,15 +12,19 @@
   object-fit: cover;
 }
 
+
+.avatar-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .avatar-xl {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  object-fit: cover;
-  position: fixed;
-  z-index: 100000000000000;
-  right: 590px;
-  margin-top: -50px;
+  text-align: center;
+  z-index: 10000;
+  margin-top: -30px;
 }
 
 .avatar-bordered {
