@@ -6,7 +6,7 @@ class ClashRequestPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    false if record.user
   end
 
   def new?
