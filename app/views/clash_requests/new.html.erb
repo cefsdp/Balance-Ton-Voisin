@@ -1,8 +1,12 @@
-<h1>This the clash request New</h1>
+<div class="container col-4 mt-5 offset-4">
 
-<div class="container">
-  <%= simple_form_for([ @publication, @clash_request ]) do |f| %>
-    <%= f.input :content %>
-    <%= f.submit %>
+  <% if ClashRequest.where({publication: @publication, user: current_user}).exists? %>
+  	<h3>Vous avez déjà demandé un clash à <%= @publication.user.username  %>!</h3>
+
+  <% else %>
+	  <%= simple_form_for([ @publication, @clash_request ]) do |f| %>
+	    <%= f.input :content, label: "Pourquoi souhaitez-vous clasher cet utilisateur ?" %>
+	    <%= f.submit "Demander le clash" %>
+	  <% end %>
   <% end %>
 </div>

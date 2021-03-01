@@ -17,7 +17,7 @@ class ClashRequestsController < ApplicationController
     @publication = Publication.find(params[:publication_id])
     @clash_request.publication = @publication
     @clash_request.user = current_user
-    redirect_to publication_path(@publication) if @clash_request.save!
+    redirect_to publication_path(@publication) if @clash_request.save! 
   end
 
   def edit
@@ -33,7 +33,7 @@ class ClashRequestsController < ApplicationController
   end
 
   def destroy
-    @clash_request = Comment.find(params[:id])
+    @clash_request = ClashRequest.find(params[:id])
     authorize @clash_request
     @clash_request.destroy
     redirect_to publication_path(@clash_request.publication)

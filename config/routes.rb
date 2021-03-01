@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [ :destroy ]
+  resources :clash_requests, only: [ :destroy, :edit, :update ]
   resources :users, only: [ :show ]
 end

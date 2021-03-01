@@ -6,7 +6,12 @@ class ClashRequestPolicy < ApplicationPolicy
   end
 
   def create?
-    false if record.user
+    if ClashRequest.where({user: user, publication: @publication}) == []
+      true
+    else
+      false
+    end
+    
   end
 
   def new?
@@ -22,7 +27,7 @@ class ClashRequestPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    record.user == user || @publication.user == user
   end
 
 end

@@ -29,30 +29,24 @@
 					<div class="description"><%= @publication.content %></div>
 				</div>
 			</div> -->
-			<% if @publication.user != current_user %>
+			<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
 
 				<%= link_to new_publication_clash_request_path(@publication) do %>
-				<h1>Clasher</h1>
+					<h1>Clasher</h1>
 				<% end %>
 			<% end %>
 
-			<% if @publication.user == current_user %>
-
-			<% end %>
-
 		    <% @clash_requests.each do |request| %>
-              <% if request.user == current_user %>
+              <% if request.user == current_user || @publication.user == current_user %>
                 <h5> <%= request.user.username %> </h5>
                 <p> <%= request.content %> </p>
+                <% if request.user == current_user %>
+                	<%= link_to edit_clash_request_path(request) do %><i class="far fa-edit edit"></i><% end %>
+                <% end %>
+                <%= link_to clash_request_path(request), method: :delete do %>
+                	<i class="far fa-trash-alt delete"></i>
+                <% end %>
               <% end %>
-
-              <% if @publication.user == current_user %>
-                <h5> <%= request.user.username %> </h5>
-                <p> <%= request.content %> </p>
-
-              <% end %>
-
-
 		    <% end %>
 
 
