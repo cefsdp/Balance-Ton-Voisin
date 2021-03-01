@@ -15,13 +15,13 @@
 
 
 <div class="profile-content">
-  <div class="col-4 pl-5 py-2 user-infos">
-  	<div class="card-post">
-  		<p> <%= @publications.count %> publications</p>
-  		<p> <%= @comments.count %> participations </p>
-  		<p class="mb-0">0 clashs gagnés</p>
-  	</div>
-  </div>
+<div class="col-4 pl-5 py-2 user-infos">
+	<div class="card-post">
+		<p> <%= @publications.count %> publications</p>
+		<p> <%= @comments.count %> participations </p>
+	</div>
+</div>
+
 	<div class="col-8 pr-5 py-2 user-publications">
 		<% @publications.reverse.each do |publication| %>
 			<%= link_to publication_path(publication) do %>

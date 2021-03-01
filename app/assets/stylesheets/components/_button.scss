@@ -28,6 +28,25 @@
     color: white;
   }
 
+  .btn-clash {
+    color: white;
+    padding: 8px 24px;
+    background: #8731f5;
+    transition: background 0.3s ease;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    font-size: 30px;
+  }
+
+  .btn-clash:hover {
+    background: #7138ba;
+    color: white;
+  }
+
   .btn-outline-secondary {
     border-radius: 40px;
   }
