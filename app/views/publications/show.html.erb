@@ -8,7 +8,11 @@
 					<%= link_to user_path(@publication.user) do  %>
 					<div class="user-data">
 						<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div>
-						<div class="username"><%= @publication.user.username %></div>
+						<% if publication.user == current_user %>
+              <div class="username text-secondary"><%= publication.user.username %></div>
+            <% else %>
+              <div class="username"><%= publication.user.username %></div>
+            <% end %>
 					</div>
 					<% end %>
 					<span>
