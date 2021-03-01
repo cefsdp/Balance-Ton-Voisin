@@ -48,3 +48,50 @@
   padding-top: 45px;
 }
 
+.notifs {
+  padding-right: 15px;
+  font-size: 20px;
+  position: relative;
+  .notif_indic {
+    position: absolute;
+    bottom: 15px;
+    left: 8px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #8731F5;
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    line-height: 15px;
+    background-color: #8731F5;
+  }
+  .dropnotifs {
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  .notif {    
+    display: flex;
+    align-items: center;
+    .new {
+      width: 15px;
+      height: 15px;
+      border: 1px solid #8731F5;
+      border-radius: 50%;
+      background-color: #8731F5;
+    }
+    .old {
+      width: 15px;
+      height: 15px;
+      border: 1px none;
+    }
+    .text {
+      padding-left: 10px;
+      width: 200px;
+      font-size: 15px;
+      line-break: normal;
+      white-space: normal;
+    }
+  }
+}
