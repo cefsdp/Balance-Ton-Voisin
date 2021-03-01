@@ -5,6 +5,10 @@ class ClashRequestPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    record.user == user || record.publication.user == user
+  end
+
   def create?
     if ClashRequest.where({user: user, publication: @publication}) == []
       true

@@ -37,25 +37,49 @@
 			<% end %>
 
 		    <% @clash_requests.each do |request| %>
-              <% if request.user == current_user || @publication.user == current_user %>
-                <h5> <%= request.user.username %> </h5>
-                <p> <%= request.content %> </p>
-                
-                <% if request.user == current_user %>
-                	<%= link_to edit_clash_request_path(request) do %>
-                		<i class="far fa-edit edit"></i>
-                	<% end %>
-                <% end %>
+              <% if policy(request).show? %>
+	              <div class="card-post post-show">
 
-                <% if @publication.user == current_user %>
-                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
-                    	<h3>Accepter</h3>
-                    <% end %>
-                <% end %>
+	                <div class="posthead">
+						<%= link_to user_path(request.user) do  %>
+						<div class="user-data">
+							<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
+							<div class="username"><%= request.user.username %></div>
+						</div>
+						<% end %>
+						<span>
+							<span class="comcreation">
+								<%= request.created_at %>
+							</span>
+							<span>
+							    <% if policy(request).edit? %>
+		                	      <%= link_to edit_clash_request_path(request) do %>
+		                		    <i class="far fa-edit edit"></i>
+		                	      <% end %>
+		                        <% end %>
+							</span>
+							<span>
+								<% if policy(request).destroy? %>
+								    <%= link_to clash_request_path(request), method: :delete do %>
+		                	            <i class="far fa-trash-alt delete"></i>
+		                            <% end %>
+								<% end %>
+							</span>
+						</span>
+					</div>
+	                <div class="description"> <%= request.content %> </div>
+	                
+	                <% if @publication.user == current_user %>
+		                <div class="text-right">
+		                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
+		                    	<div class="btn btn-flat">Accepter le clash</div>
+		                    <% end %>
+		                </div>
+	                <% end %>
 
-                <%= link_to clash_request_path(request), method: :delete do %>
-                	<i class="far fa-trash-alt delete"></i>
-                <% end %>
+
+
+	              </div>
               <% end %>
 		    <% end %>
 
