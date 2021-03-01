@@ -11,11 +11,16 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
 .avatar-xl {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  position: fixed;
+  z-index: 100000000000000;
+  right: 560px;
+  margin-top: -50px;
 }
 
 .avatar-bordered {

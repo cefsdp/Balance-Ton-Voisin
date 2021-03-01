@@ -1,0 +1,19 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to root_path, class: "navbar-brand" do %>
+  <div class="d-flex text-left align-items-center">
+    <%= image_tag "logo.png", alt: "alttext"%>
+    <h3 class="pt-2 title-website"> #Balancetonvoisin</h3>
+  </div>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div>
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+  </div>
+</div>
+<div class="z-index">
+  <%= cl_image_tag current_user.profile_picture, class:"avatar-xl"%>
+</div>

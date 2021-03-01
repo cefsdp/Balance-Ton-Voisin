@@ -1,8 +1,6 @@
-<h1>Publications#edit</h1>
-<p>Find me in app/views/publications/edit.html.erb</p>
-
-<%= simple_form_for(@publication) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.submit %>
-<% end %>
+<div class="container mt-5">
+  <%= simple_form_for @publication, html: {class: 'form-inline text-area-container'} do |f| %>
+    <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input" }, wrapper_html: { class: "text-area-wrapper"} %>
+    <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button" %>
+  <% end %>
+</div>
