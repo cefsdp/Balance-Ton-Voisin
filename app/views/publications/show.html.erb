@@ -8,11 +8,15 @@
 					<%= link_to user_path(@publication.user) do  %>
 					<div class="user-data">
 						<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div>
-						<div class="username"><%= @publication.user.username %></div>
+						<% if @publication.user == current_user %>
+              <div class="username text-secondary"><%= @publication.user.username %></div>
+            <% else %>
+              <div class="username"><%= @publication.user.username %></div>
+            <% end %>
 					</div>
 					<% end %>
 					<span>
-						<span class="comcreation"><%= @publication.created_at %></span>
+						<span class="comcreation"><%= @publication.created_at.strftime("%d/%m/%Y à %H:%M") %></span>
 						<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
 						<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
 					</span>
@@ -70,7 +74,7 @@
 											<% end %>
 										</span>
 										<span>
-											<span class="comcreation"><%= comment.created_at %></span>
+											<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></span>
 											<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 										</span>
 									</div>
