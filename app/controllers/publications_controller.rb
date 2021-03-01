@@ -9,6 +9,9 @@ class PublicationsController < ApplicationController
     authorize @publication
     @comments = Comment.where(publication_id: @publication)
     @comment = Comment.new
+    current_user.notifications.each do |notification|
+      notification.mark_as_read! if notification.params[:comment].publication_id == @publication.id
+    end
   end
 
   def new

@@ -11,7 +11,49 @@
   </button>
 
 
+  <% # Notifications %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if user_signed_in? %>
+      <ul class="navbar-nav mr-auto notifs">
+        <li class="nav-item dropdown">
+          <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.where(read_at: nil).count != 0 %><div class="notif_indic"><%= current_user.notifications.where(read_at: nil).count %></div><% end %>
+          <div class="dropdown-menu dropdown-menu-right dropnotifs" aria-labelledby="navbarDropdown">
+            <% current_user.notifications.newest_first.each do |notification| %>
+
+              <% if  notification.read_at.nil? %>
+
+                <% if notification.type == "CommentNotification" %>
+                  <%= link_to publication_path(notification.params[:comment].publication_id) do %>
+                    <div class="dropdown-item notif">
+                      <div class="new"></div>
+                      <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params[:comment].user_id).username %></div>
+                    </div>
+                  <% end %>
+                <% end %>
+
+              <% else %>
+
+                <% if notification.type == "CommentNotification" %>
+                  <%= link_to publication_path(notification.params[:comment].publication_id) do %>
+                    <div class="dropdown-item notif">
+                      <div class="old"></div>
+                      <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params[:comment].user_id).username %></div>
+                    </div>
+                  <% end %>
+                <% end %>
+
+              <% end %>
+
+            <% end %>
+            <% # raise %>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+  
+
+    <% # Avatar dropdown %>
+
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
 
