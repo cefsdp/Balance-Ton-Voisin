@@ -48,7 +48,7 @@
                 <% end %>
 
                 <% if @publication.user == current_user %>
-                    <%= link_to publication_clash_request_clash_index_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
+                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
                     	<h3>Accepter</h3>
                     <% end %>
                 <% end %>

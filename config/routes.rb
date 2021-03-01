@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :publications do
   	resources :comments, only: [ :create ]
   	resources :clash_requests, only: [ :create, :new, :show ] do
-      resources :clash, only: [ :create, :new ]
+      resources :clashes, only: [ :create, :new ]
     end
   end
 
