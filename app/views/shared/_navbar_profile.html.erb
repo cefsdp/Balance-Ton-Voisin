@@ -14,6 +14,6 @@
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
   </div>
 </div>
-<div class="z-index">
-  <%= cl_image_tag current_user.profile_picture, class:"avatar-xl"%>
+<div class="avatar-div">
+  <%= cl_image_tag @user.profile_picture, class:"avatar-xl"%>
 </div>

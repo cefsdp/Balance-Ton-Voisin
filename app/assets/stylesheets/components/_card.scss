@@ -289,7 +289,7 @@
         a{
           color: rgba(0,0,0,0.8);
         }
-        
+
         i {
           color: red;
           margin-right: 10px;
@@ -363,6 +363,42 @@
   }
 
 
+  .card-post-profile {
+    margin-top: 2px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+    padding: 30px;
+    border-radius: 40px;
+    border: 1px solid rgba(212, 178, 255, 0.66);
+    transition: transform .2s; /* Animation */
+    &:hover {
+      transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      text-decoration: none;
+    }
+  .posthead{
+    display: flex;
+    justify-content: space-between;
+    .user-data {
+      display: flex;
+      justify-content: flex-start;
+      .username {
+        padding-left: 15px;
+        font-size: 23px;
+        font-weight: light;
+        align-items: center;
+        align-self: center;
+        color: rgba(0,0,0,0.8);
+      }
+    }
+      .description {
+        padding-top: 20px;
+        text-align: justify;
+        font-size: 16px;
+        word-break: normal;
+      }
+    }
+}
 
 
 
