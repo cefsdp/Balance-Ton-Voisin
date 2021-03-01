@@ -5,6 +5,7 @@ class ClashRequestPolicy < ApplicationPolicy
     end
   end
 
+
   def show?
     record.user == user || record.publication.user == user
   end
