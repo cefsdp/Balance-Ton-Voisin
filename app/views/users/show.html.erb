@@ -4,7 +4,7 @@
     <h3 class="pt-2">Bonjour <%= @user.username %>!
     <% if @user == current_user %>
     	<%= link_to edit_user_registration_path(@user) do  %>
-    	  <i class="far fa-edit edit"></i>
+    	  <i class="far fa-edit edit" id="edit-profile"></i>
     	 <% end %>
     <% end %>
     </h3>
@@ -15,13 +15,13 @@
 
 
 <div class="profile-content">
-  <div class="col-4 pl-5 py-2 user-infos">
-  	<div class="card-post">
-  		<p> <%= @publications.count %> publications</p>
-  		<p> <%= @comments.count %> participations </p>
-  		<p class="mb-0">0 clashes gagnés</p>
-  	</div>
-  </div>
+<div class="col-4 pl-5 py-2 user-infos">
+	<div class="card-post">
+		<p> <%= @publications.count %> publications</p>
+		<p> <%= @comments.count %> participations </p>
+	</div>
+</div>
+
 	<div class="col-8 pr-5 py-2 user-publications">
 		<% @publications.reverse.each do |publication| %>
 			<%= link_to publication_path(publication) do %>

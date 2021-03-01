@@ -12,16 +12,45 @@
     }
 }
 
+.text-area-container-pop-up {
+    position: relative;
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 40px;
+    .text {
+      color: black;
+      font-weight: 500;
+      font-size: 18px;
+      font-family: 'Poppins', sans-serif;
+    }
+}
+
+
+
 .post-input {
   width: 100% !important;
   height: 100%;
   border: none;
 }
 
+.form-control.post-input-pop-up {
+  width: 850px;
+  height: 250px;
+  border: none;
+  margin: 0;
+}
+
+
 .text-area-button {
     position: absolute;
     bottom: 10px;
     right: 20px;
+}
+
+.text-area-button-pop-up {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
 }
 
 .text-area-wrapper {
@@ -75,6 +104,79 @@
     background-image: none;
   }
 }
+
+
+.modal-content {
+  height: 350px;
+  width: 800px;
+  border-radius: 40px;
+  margin-right: 300px;
+}
+
+
+.modal-body-card-francais {
+      position: absolute;
+    bottom: -450px;
+    right: -400px;
+}
+
+
+.modal-body-card-morty {
+      position: absolute;
+    bottom: -600px;
+    right: -380px;
+}
+.modal-body-card-rick {
+    position: absolute;
+    bottom: -600px;
+    right: -380px;
+}
+.modal-body-card-tree {
+    position: absolute;
+    bottom: -640px;
+    right: -340px;
+}
+.modal-body-card-simpson {
+    position: absolute;
+    bottom: -550px;
+    right: -445px;
+}
+.modal-body-card-choco {
+    position: absolute;
+    bottom: -620px;
+    right: -340px;
+}
+.modal-body-card-virus {
+    position: absolute;
+    bottom: -550px;
+    right: -450px;
+}
+.modal-body-card-chrono {
+    position: absolute;
+    bottom: -600px;
+    right: -380px;
+}
+.modal-body-card-kebab {
+    position: absolute;
+    bottom: -600px;
+    right: -380px;
+}
+.modal-body-card-pangolin {
+    position: absolute;
+    bottom: -500px;
+    right: -430px;
+}
+.modal-body-card-voisin {
+    position: absolute;
+    bottom: -500px;
+    right: -430px;
+}
+.modal-body-card-planete {
+    position: absolute;
+    right: -430px;
+}
+
+
 
 
 
