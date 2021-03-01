@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
     @comment.publication = @publication
     @comment.user.score += 2 if @comment.save!
     @comment.user.save!
+    notification = CommentNotification.with(comment: @comment)
+    notification.deliver(@comment.publication.user)
     redirect_to publication_path(@publication) if @comment.save!
   end
 
@@ -34,10 +36,13 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    authorize @comment
-    @comment.user.score -= 2
-    @comment.user.save!
-    @comment.destroy
+    @publication = @comment.publication
+    if @publication.user.notifications.nil? == false
+      @publication.user.notifications.each do |notification|
+        notification.delete if notification.params[:comment].id == @comment.id
+      end
+    end
+    comment_destroy
     redirect_to publication_path(@comment.publication)
   end
 
@@ -47,4 +52,10 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content, :user, :publication)
   end
 
+  def comment_destroy
+    authorize @comment
+    @comment.user.score -= 2
+    @comment.user.save!
+    @comment.destroy
+  end
 end
