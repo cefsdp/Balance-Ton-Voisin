@@ -77,7 +77,9 @@
 				<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
 
 					<%= link_to new_publication_clash_request_path(@publication) do %>
-						<h1>Clasher</h1>
+					<div class="d-flex justify-content-center mt-5">
+						<div class="btn btn-clash">CLASH</div>
+					</div>
 					<% end %>
 				<% end %>
 
