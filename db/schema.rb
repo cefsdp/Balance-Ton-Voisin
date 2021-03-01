@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_110442) do
+
+ActiveRecord::Schema.define(version: 2021_03_01_105402) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -48,6 +49,17 @@ ActiveRecord::Schema.define(version: 2021_02_26_110442) do
     t.index ["user_id"], name: "index_clash_requests_on_user_id"
   end
 
+
+  create_table "clashes", force: :cascade do |t|
+    t.integer "contender_votes"
+    t.integer "publisher_votes"
+    t.bigint "clash_request_id"
+    t.datetime "countdown_end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clash_request_id"], name: "index_clashes_on_clash_request_id"
+  end
+  
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "publication_id", null: false

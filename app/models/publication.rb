@@ -5,4 +5,5 @@ class Publication < ApplicationRecord
   #validates :content, presence: true
   #validates :content, uniqueness: true
   #validates :content, length: { minimum: 20 }
+
 end
