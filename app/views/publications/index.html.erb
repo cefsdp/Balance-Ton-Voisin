@@ -1,8 +1,16 @@
 <div class="container my-5">
-    <%= simple_form_for @publication, html: {class: 'form-inline text-area-container'} do |f| %>
-      <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input" }, wrapper_html: { class: "text-area-wrapper"} %>
-      <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button" %>
-    <% end %>
+
+  <div class="container mt-5" data-toggle="modal" data-target="#inputModal">
+    <div class="form-inline text-area-container">
+      <p class="text-secondary mt-3"> Un problème avec ton voisin ?</p>
+      <button type="button" class="btn btn-flat text-area-button mb-2">
+        Dénonce !
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
 	<h2 class="my-4"><strong>Les dernières plaintes</strong></h2>
 	<% @publications.reverse.each do |publication| %>
 		<%= link_to publication_path(publication) do %>
@@ -10,7 +18,11 @@
 				<div class="posthead">
 					<div class="user-data">
   						<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
-  						<div class="username"><%= publication.user.username %></div>
+  						<% if publication.user == current_user %>
+                <div class="username text-secondary"><%= publication.user.username %></div>
+              <% else %>
+                <div class="username"><%= publication.user.username %></div>
+              <% end %>
 					</div>
           <div class="text-secondary pt-3"><%= publication.created_at.strftime("%d/%m/%Y à %H:%M") %></div>
 				</div>
@@ -21,3 +33,17 @@
 		<% end %>
 	<% end %>
 </div>
+
+
+<div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="margin-left: 250px">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= simple_form_for @publication, html: {class: 'form-inline text-area-container-pop-up'} do |f| %>
+          <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input-pop-up" }, wrapper_html: { class: "text-area-wrapper"} %>
+          <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button-pop-up ml-3" %>
+        <% end %>
+      </div>
+  </div>
+</div>
+

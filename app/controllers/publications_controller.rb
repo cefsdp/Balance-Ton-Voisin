@@ -12,6 +12,8 @@ class PublicationsController < ApplicationController
     current_user.notifications.each do |notification|
       notification.mark_as_read! if notification.params[:comment].publication_id == @publication.id
     end
+    @clash_requests = ClashRequest.where(publication_id: @publication)
+    @clash = Clash.where(clash_request_id: @clash_requests).first
   end
 
   def new
