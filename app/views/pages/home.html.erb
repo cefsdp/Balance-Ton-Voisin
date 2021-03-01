@@ -119,12 +119,15 @@
 <% else  %>
 
 
-<div class="container mt-5">
+<div class="container mt-5" data-toggle="modal" data-target="#exampleModal">
+  <div class="form-inline text-area-container">
+    <p class="text-secondary"> Un problème avec ton voisin ?</p>
+    <button type="button" class="btn btn-flat text-area-button mb-1">
+      Dénonce !
+    </button>
+  </div>
+</div>
 
-    <%= simple_form_for @publication, html: {class: 'form-inline text-area-container'} do |f| %>
-      <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input" }, wrapper_html: { class: "text-area-wrapper"} %>
-      <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button" %>
-    <% end %>
 
   <h2 class="my-4"><strong>Les plaintes les plus chaudes de ta région</strong></h2>
   <div class="cards">
@@ -158,23 +161,17 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="margin-left: 250px">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= simple_form_for @publication, html: {class: 'form-inline text-area-container-pop-up'} do |f| %>
+          <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input-pop-up" }, wrapper_html: { class: "text-area-wrapper"} %>
+          <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button-pop-up ml-3" %>
+        <% end %>
+      </div>
+  </div>
+</div>
 
 <% end  %>
 

@@ -12,16 +12,45 @@
     }
 }
 
+.text-area-container-pop-up {
+    position: relative;
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 40px;
+    height: 330px;
+    .text {
+      color: black;
+      font-weight: 500;
+      font-size: 18px;
+      font-family: 'Poppins', sans-serif;
+    }
+}
+
+
+
 .post-input {
   width: 100% !important;
   height: 100%;
   border: none;
 }
 
+.form-control.post-input-pop-up {
+  width: 700px;
+  height: 300px;
+  border: none;
+}
+
+
 .text-area-button {
     position: absolute;
     bottom: 10px;
     right: 20px;
+}
+
+.text-area-button-pop-up {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
 }
 
 .text-area-wrapper {
@@ -77,8 +106,11 @@
 }
 
 
-
-
-
+.modal-content {
+  height: 350px;
+  width: 800px;
+  border-radius: 40px;
+  margin-right: 300px;
+}
 
 
