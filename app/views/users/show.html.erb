@@ -4,7 +4,7 @@
     <h3 class="pt-2">Bonjour <%= @user.username %>!
     <% if @user == current_user %>
     	<%= link_to edit_user_registration_path(@user) do  %>
-    	  <i class="far fa-edit edit"></i>
+    	  <i class="far fa-edit edit" id="edit-profile"></i>
     	 <% end %>
     <% end %>
     </h3>
