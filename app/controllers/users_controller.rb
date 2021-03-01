@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @disable_nav = true
   	@user = User.find(params[:id])
     @user.ranking
     authorize @user
