@@ -1,26 +1,16 @@
+<%=  render "shared/navbar_profile" %>
 
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-  <div class="d-flex text-left align-items-center">
-    <%= image_tag "logo.png", alt: "alttext"%>
-    <h3 class="pt-2 title-website"> #Balancetonvoisin</h3>
-  </div>
-  <% end %>
- </div>
-
-<div class="user-profile-navbar">
-<div class="user-profile-picture text-center">
-		<%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
-	    <h1 class="pt-2"><%= @user.username %>
-            <% if @user == current_user %>
-	    	<%= link_to edit_user_registration_path(@user) do  %>
-	    	  <i class="far fa-edit edit"></i>
-	    	  <% end %>
-	    	 <% end %>
-
-	    </h1>
-    </div>
+<div class="d-flex flex-column justify-content-center align-items-center profile-description">
+    <h3 class="pt-2">Bonjour <%= @user.username %>!
+    <% if @user == current_user %>
+    	<%= link_to edit_user_registration_path(@user) do  %>
+    	  <i class="far fa-edit edit" id="edit-profile"></i>
+    	 <% end %>
+    <% end %>
+    </h3>
+    <p class="text-secondary">Profil type: <%= @user.description %></p>
 </div>
+
 
 
 
@@ -31,6 +21,7 @@
 		<p> <%= @comments.count %> participations </p>
 	</div>
 </div>
+
 	<div class="col-8 pr-5 py-2 user-publications">
 		<% @publications.reverse.each do |publication| %>
 			<%= link_to publication_path(publication) do %>

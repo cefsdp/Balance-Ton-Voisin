@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
 
   has_one_attached :photo
+  has_many :publications, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   #validates :username, presence: true
   validates :username, uniqueness: true
@@ -17,6 +19,21 @@ class User < ApplicationRecord
       photo.key
     else
       "Profile_picture"
+    end
+  end
+
+  def ranking
+    @user = self
+    if @user.score <= -20
+      @user.description = "Vraiment un voisin pourri"
+    elsif @user.score <= -10
+      @user.description = "Karen"
+    elsif @user.score <= 10
+      @user.description = "Voisin lambda"
+    elsif @user.score <= 20
+      @user.description = "Organisateur de la fête des voisins"
+    else
+      @user.description = "Dieu parmi les voisins"
     end
   end
 end
