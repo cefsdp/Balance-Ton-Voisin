@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 2021_03_01_105402) do
   end
 
   create_table "clashes", force: :cascade do |t|
-    t.integer "contender_votes"
-    t.integer "publisher_votes"
+    t.integer "contender_votes", default: 0
+    t.integer "publisher_votes", default: 0
     t.bigint "clash_request_id"
-    t.datetime "countdown_end"
+    t.datetime "countdown_end", default: "2021-03-02 15:48:03"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["clash_request_id"], name: "index_clashes_on_clash_request_id"
