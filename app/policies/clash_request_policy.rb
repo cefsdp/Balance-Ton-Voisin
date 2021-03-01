@@ -27,7 +27,7 @@ class ClashRequestPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user || @publication.user == user
+    record.user == user || record.publication.user == user
   end
 
 end

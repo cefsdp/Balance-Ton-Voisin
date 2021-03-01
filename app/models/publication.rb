@@ -2,7 +2,8 @@ class Publication < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :clash_requests
-  #validates :content, presence: true
-  #validates :content, uniqueness: true
-  #validates :content, length: { minimum: 20 }
+  has_many :clashes
+  validates :content, presence: true
+  validates :content, uniqueness: true
+  validates :content, length: { minimum: 20 }
 end
