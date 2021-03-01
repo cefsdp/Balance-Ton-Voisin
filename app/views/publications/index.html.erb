@@ -1,14 +1,16 @@
 <div class="container my-5">
 
-<div class="container mt-5" data-toggle="modal" data-target="#exampleModal">
-  <div class="form-inline text-area-container">
-    <p class="text-secondary"> Un problème avec ton voisin ?</p>
-    <button type="button" class="btn btn-flat text-area-button mb-1">
-      Dénonce !
-    </button>
+  <div class="container mt-5" data-toggle="modal" data-target="#exampleModal">
+    <div class="form-inline text-area-container">
+      <p class="text-secondary"> Un problème avec ton voisin ?</p>
+      <button type="button" class="btn btn-flat text-area-button mb-1">
+        Dénonce !
+      </button>
+    </div>
   </div>
 </div>
 
+<div class="container my-5">
 	<h2 class="my-4"><strong>Les dernières plaintes</strong></h2>
 	<% @publications.reverse.each do |publication| %>
 		<%= link_to publication_path(publication) do %>
