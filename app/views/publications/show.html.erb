@@ -1,87 +1,97 @@
-<div class="container pt-4">
+<div class="container pt-5">
 
 	<div class="bodypostshow">
 		<div class="cardpostshow">
 
-			<div class="card-post post-show">
-				<div class="posthead">
-					<%= link_to user_path(@publication.user) do  %>
-					<div class="user-data">
-						<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div>
-						<div class="username"><%= @publication.user.username %></div>
-					</div>
-					<% end %>
-					<span>
-						<span class="comcreation"><%= @publication.created_at %></span>
-						<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
-						<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
-					</span>
-				</div>
-				<div class="description">
-					<span class="showdesc"><%= @publication.content %></span>
-				</div>
-			</div>
 
-			<!-- <div class="card-post-show mt-1">
-				<div class="postavatar"><%= cl_image_tag current_user.profile_picture, class: "avatar-large" %></div>
-				<div class="content">
-					<div class="username"><%= @publication.user.username %></div>
-					<div class="description"><%= @publication.content %></div>
-				</div>
-			</div> -->
-			<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
 
-				<%= link_to new_publication_clash_request_path(@publication) do %>
-					<h1>Clasher</h1>
-				<% end %>
-			<% end %>
 
-		    <% @clash_requests.each do |request| %>
-              <% if policy(request).show? %>
-	              <div class="card-post post-show">
 
-	                <div class="posthead">
-						<%= link_to user_path(request.user) do  %>
+
+
+			<% if @clash %>
+				<h1>CA MARCHE</h1>
+			<% else %>
+
+				<div class="card-post post-show">
+					<div class="posthead">
+						<%= link_to user_path(@publication.user) do  %>
 						<div class="user-data">
-							<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
-							<div class="username"><%= request.user.username %></div>
+							<div><%= cl_image_tag @publication.user.profile_picture, class: "avatar-large" %></div>
+							<div class="username"><%= @publication.user.username %></div>
 						</div>
 						<% end %>
 						<span>
-							<span class="comcreation">
-								<%= request.created_at %>
-							</span>
-							<span>
-							    <% if policy(request).edit? %>
-		                	      <%= link_to edit_clash_request_path(request) do %>
-		                		    <i class="far fa-edit edit"></i>
-		                	      <% end %>
-		                        <% end %>
-							</span>
-							<span>
-								<% if policy(request).destroy? %>
-								    <%= link_to clash_request_path(request), method: :delete do %>
-		                	            <i class="far fa-trash-alt delete"></i>
-		                            <% end %>
-								<% end %>
-							</span>
+							<span class="comcreation"><%= @publication.created_at %></span>
+							<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
+							<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
 						</span>
 					</div>
-	                <div class="description"> <%= request.content %> </div>
-	                
-	                <% if @publication.user == current_user %>
-		                <div class="text-right">
-		                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
-		                    	<div class="btn btn-flat">Accepter le clash</div>
-		                    <% end %>
-		                </div>
-	                <% end %>
+					<div class="description">
+						<span class="showdesc"><%= @publication.content %></span>
+					</div>
+				</div>
+
+				<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
+
+					<%= link_to new_publication_clash_request_path(@publication) do %>
+						<h1>Clasher</h1>
+					<% end %>
+				<% end %>
+
+			    <% @clash_requests.each do |request| %>
+	              <% if policy(request).show? %>
+		              <div class="card-post post-show">
+
+		                <div class="posthead">
+							<%= link_to user_path(request.user) do  %>
+							<div class="user-data">
+								<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
+								<div class="username"><%= request.user.username %></div>
+							</div>
+							<% end %>
+							<span>
+								<span class="comcreation">
+									<%= request.created_at %>
+								</span>
+								<span>
+								    <% if policy(request).edit? %>
+			                	      <%= link_to edit_clash_request_path(request) do %>
+			                		    <i class="far fa-edit edit"></i>
+			                	      <% end %>
+			                        <% end %>
+								</span>
+								<span>
+									<% if policy(request).destroy? %>
+									    <%= link_to clash_request_path(request), method: :delete do %>
+			                	            <i class="far fa-trash-alt delete"></i>
+			                            <% end %>
+									<% end %>
+								</span>
+							</span>
+						</div>
+		                <div class="description"> <%= request.content %> </div>
+		                
+		                <% if @publication.user == current_user %>
+			                <div class="text-right">
+			                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
+			                    	<div class="btn btn-flat">Accepter le clash</div>
+			                    <% end %>
+			                </div>
+		                <% end %>
 
 
 
-	              </div>
-              <% end %>
-		    <% end %>
+		              </div>
+	              <% end %>
+			    <% end %>
+
+
+			<% end %>
+
+
+
+
 
 
 		</div>
