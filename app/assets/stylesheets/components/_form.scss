@@ -68,3 +68,17 @@
 .btn-submit {
   color: white;
 }
+#publication_content {
+  background-image: none;
+  &:focus {
+    box-shadow: none;
+    background-image: none;
+  }
+}
+
+
+
+
+
+
+
