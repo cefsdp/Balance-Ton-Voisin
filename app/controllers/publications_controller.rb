@@ -10,6 +10,8 @@ class PublicationsController < ApplicationController
     @comments = Comment.where(publication_id: @publication)
     @comment = Comment.new
     @clash_requests = ClashRequest.where(publication_id: @publication)
+    @clash = Clash.where(clash_request_id: @clash_requests).first
+
   end
 
   def new
