@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_164730) do
+ActiveRecord::Schema.define(version: 2021_03_02_152828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_164730) do
     t.integer "contender_votes", default: 0
     t.integer "publisher_votes", default: 0
     t.bigint "clash_request_id"
-    t.datetime "countdown_end", default: "2021-03-02 16:45:59"
+    t.datetime "countdown_end", default: "2021-03-03 15:32:30"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["clash_request_id"], name: "index_clashes_on_clash_request_id"
