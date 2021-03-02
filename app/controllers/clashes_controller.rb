@@ -6,8 +6,8 @@ class ClashesController < ApplicationController
 
   def create
   	@clash = Clash.new
-  	@publication = Publication.find(params[:publication_id])
     @clash_request = ClashRequest.find(params[:clash_request_id])
+  	@publication = @clash_request.publication
     @clash.clash_request = @clash_request
     @clash.publisher_votes = 0
     @clash.contender_votes = 0
