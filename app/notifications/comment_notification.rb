@@ -17,9 +17,9 @@ class CommentNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  def message
-    t("Vous avez un nouveau commentaire")
-  end
+  # def message
+  #  t("Vous avez un nouveau commentaire")
+  # end
   #
   # def url
   #   post_path(params[:post])
