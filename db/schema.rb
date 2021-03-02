@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_03_01_105402) do
 
   # These are extensions that must be enabled in order to support this database
@@ -49,10 +48,10 @@ ActiveRecord::Schema.define(version: 2021_03_01_105402) do
   end
 
   create_table "clashes", force: :cascade do |t|
-    t.integer "contender_votes", default: 0
-    t.integer "publisher_votes", default: 0
+    t.integer "contender_votes"
+    t.integer "publisher_votes"
     t.bigint "clash_request_id"
-    t.datetime "countdown_end", default: "2021-03-02 15:48:03"
+    t.datetime "countdown_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["clash_request_id"], name: "index_clashes_on_clash_request_id"
@@ -98,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_105402) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.string "description", default: "Voisin lambda"
     t.integer "score", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
