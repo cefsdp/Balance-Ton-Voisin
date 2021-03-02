@@ -17,7 +17,7 @@
               </div>
             </div>
               <h2>Flanders</h2>
-              <h1>⚡️</h1>
+              <h2>⚡️</h2>
               <h2>  Homer </h2>
             <div class="user-description">
               <%= image_tag "homer.png", class: "border avatar users-avatar user2-avatar"%>
@@ -268,7 +268,37 @@
         <% end %>
       <% end %>
     </div>
-    <%= link_to publications_path do %>
+
+</div>
+
+<div class="container mb-5">
+  <h2 class=""><strong>Les Clashs à la Une</strong></h2>
+  <div class="cards">
+    <% @clashs.reverse.first(3).each do |clash| %>
+      <%= link_to publication_path(clash.clash_request.publication) do %>
+        <div class="card-clash">
+          <div class="users-avatar">
+            <div class="user1-avatar"><%= cl_image_tag clash.clash_request.publication.user.profile_picture, class: "avatar-large" %></div>
+            <div class="user2-avatar"><%= cl_image_tag clash.clash_request.user.profile_picture, class: "avatar-large" %></div>
+          </div>
+          <div class="content-card-clash">
+            <div class="usernames row">
+              <div class="col-5 d-flex justify-content-end"><%=clash.clash_request.publication.user.username%></div>
+              <div class="col-2">⚡️</div>
+              <div class="col-5 d-flex justify-content-start"> <%=clash.clash_request.user.username%></div>
+            </div>
+
+            <div class="countdown d-flex justify-content-center"><p class="text-secondary">End of clash: <%= clash.countdown_end %></p></div>
+            <div class="d-flex justify-content-around row">
+              <div class="content1 col-6 "><%=clash.clash_request.publication.content.truncate(50, separator: ' ')%></div>
+              <div class="content2 col-6"><%=clash.clash_request.content.truncate(50, separator: ' ')%></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to publications_path do %>
     <div class="d-flex justify-content-end mt-3">
       <p class="btn btn-ghost">Découvrir plus de plaintes <i class="far fa-arrow-alt-circle-right"></i> </p>
     </div>
@@ -279,18 +309,20 @@
 
 
 
-
-<div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" style="margin-left: 250px">
-    <div class="modal-content">
-      <div class="modal-body">
-        <%= simple_form_for @publication, html: {class: 'form-inline text-area-container-pop-up'} do |f| %>
-          <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input-pop-up" }, wrapper_html: { class: "text-area-wrapper"} %>
-          <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button-pop-up ml-3" %>
-        <% end %>
-      </div>
+  <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="margin-left: 250px">
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= simple_form_for @publication, html: {class: 'form-inline text-area-container-pop-up'} do |f| %>
+            <%= f.input :content, label: false, placeholder: "Un problème avec ton voisin ?", input_html: { class: "post-input-pop-up" }, wrapper_html: { class: "text-area-wrapper"} %>
+            <%= f.submit "Dénonce !", class: "btn btn-flat text-area-button-pop-up ml-3" %>
+          <% end %>
+        </div>
+    </div>
   </div>
-</div>
+
+
+
 <% end  %>
 
 

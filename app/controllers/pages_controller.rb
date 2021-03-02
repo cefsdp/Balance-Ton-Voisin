@@ -7,6 +7,8 @@ class PagesController < ApplicationController
   def home
     @disable_nav = true if current_user == nil
     @publications = policy_scope(Publication)
+    @clashs = policy_scope(Clash)
+    @clash
     @hotpublications = Publication.joins(:comments).group("publications.id").order("count(publications.id)")
     @publication = Publication.new
   end
