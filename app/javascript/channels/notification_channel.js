@@ -1,20 +1,14 @@
 import consumer from "./consumer";
 
 const initNotificationChannel = () => {
-  // const messagesContainer = document.getElementById('messages');
-  // if (messagesContainer) {
-   // const id = messagesContainer.dataset.chatroomId;
-
-    consumer.subscriptions.create({ channel: "NotificationChannel", id: 2 }, {
-        connected() {
-            console.log('io')
-        },
-
-      received(data) {
-        console.log(data); // called when data is broadcast in the cable
-      },
-    });
-  // }
+  consumer.subscriptions.create( "NotificationChannel", {
+    received(data) {
+      document.location.reload();
+      // console.log(data["txt"])
+      // const notifContainer = document.querySelector('.dropnotifs');
+      // notifContainer.insertAdjacentHTML('afterbegin', `<div class="dropdown-item notif"><div class="new"></div><div class="text">${data["txt"]}</div></div>`);
+    }
+  })
 }
 
 export { initNotificationChannel };
