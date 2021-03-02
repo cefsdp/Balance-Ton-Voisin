@@ -17,8 +17,7 @@ class CommentsController < ApplicationController
     @comment.publication = @publication
     @comment.user.score += 2 if @comment.save!
     @comment.user.save!
-    notification = CommentNotification.with(comment: @comment)
-    notification.deliver(@comment.publication.user)
+    notification_builder
     redirect_to publication_path(@publication) if @comment.save!
   end
 
@@ -37,11 +36,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @publication = @comment.publication
-    if @publication.user.notifications.nil? == false
-      @publication.user.notifications.each do |notification|
-        notification.delete if notification.params[:comment].id == @comment.id
-      end
-    end
     comment_destroy
     redirect_to publication_path(@comment.publication)
   end
@@ -57,5 +51,17 @@ class CommentsController < ApplicationController
     @comment.user.score -= 2
     @comment.user.save!
     @comment.destroy
+  end
+
+  def notification_builder
+    @notification = Notification.create(notification_type: "comment", user_id: @publication.user_id, params: { data: @comment })
+    notificationcable
+  end
+
+  def notificationcable
+    NotificationChannel.broadcast_to(
+      @publication.user,
+      txt: `Vous avez un nouveau commentaire de #{@comment.user}`
+    )
   end
 end
