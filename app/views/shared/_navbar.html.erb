@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto notifs">
         <li class="nav-item dropdown">
-          <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.where(read_at: nil).count != 0 %><div class="notif_indic"><%= current_user.notifications.where(read_at: nil).count %></div><% end %>
+          <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.count != 0 %><div class="notif_indic"><%= current_user.notifications.count %></div><% end %>
           <div class="dropdown-menu dropdown-menu-right dropnotifs" aria-labelledby="navbarDropdown">
             
             <% if current_user.notifications.count == 0 %>
