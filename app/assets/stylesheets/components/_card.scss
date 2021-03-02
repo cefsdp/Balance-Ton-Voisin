@@ -195,16 +195,22 @@
   .users-avatar {
     width: 80px;
     height: 80px;
-    object-fit: cover;
+  }
+  .users-description {
     display: flex;
-    justify-content: center;
-    bottom: 80px;
-    .user1-avatar {
+    justify-content: space-between;
+    align-items: center;
+    .user-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    .user2-avatar {
-      position: relative;
-      right: 5px;
-    }
+  }
+  .users-clash-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
