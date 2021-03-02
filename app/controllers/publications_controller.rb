@@ -9,11 +9,9 @@ class PublicationsController < ApplicationController
     authorize @publication
     @comments = Comment.where(publication_id: @publication)
     @comment = Comment.new
-    current_user.notifications.each do |notification|
-      notification.mark_as_read! if notification.params[:comment].publication_id == @publication.id
-    end
     @clash_requests = ClashRequest.where(publication_id: @publication)
     @clash = Clash.where(clash_request_id: @clash_requests).first
+    check_notif_read
   end
 
   def new
@@ -55,5 +53,13 @@ class PublicationsController < ApplicationController
 
   def publication_params
     params.require(:publication).permit(:title, :user, :content)
+  end
+
+  def check_notif_read
+    current_user.notifications.each do |notification|
+      if @publication.id == notification.params['data']['publication_id']
+        notification.destroy
+      end
+    end
   end
 end
