@@ -36,17 +36,6 @@
 		        </div>
 		      </div>
 
-
-
-
-
-
-
-
-
-
-
-
 			<% else %>
 
 				<div class="card-post post-show">
@@ -205,3 +194,42 @@
 	</div>
 
 </div>
+
+<div class="cardpostcoms">
+  <div class="commentcontainer">
+    <% if @comments.count == 0 %>
+    <div class="pitimsg"> Soyez le premier à commenter la publication de <%= @publication.user.username %></div>
+    <% else %>
+    <% @comments.each_with_index do |comment, index| %>
+    <div class="comment">
+      <%= link_to user_path(comment.user) do  %>
+      <div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
+      <% end %>
+      <div class="combox">
+        <div class="comusername">
+          <span>
+            <%= link_to user_path(comment.user) do  %>
+            <%= comment.user.username %>
+            <% end %>
+          </span>
+          <span>
+            <span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></span>
+            <span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
+          </span>
+        </div>
+        <div class="comtext"> <%= comment.content %> </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [ @publication, @comment ] do |f| %>
+  <%= f.input :content, label: false, :placeholder => 'Commentez' %>
+  <%= f.submit "Publier", id: "submitnewcoms" %>
+  <% end %>
+</div>
+</div>
+
+</div>
+
