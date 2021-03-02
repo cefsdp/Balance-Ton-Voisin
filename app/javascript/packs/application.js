@@ -28,10 +28,10 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-import { notif_reader } from '../plugins/notif_reader';
+import { initNotificationChannel } from '../channels/notification_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  // notif_reader()
+  initNotificationChannel();
 });
