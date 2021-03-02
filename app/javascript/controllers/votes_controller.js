@@ -29,13 +29,25 @@ export default class extends Controller {
 		.then(response => response.json())
 		.then((data) => {
 			console.log(data);
+			document.querySelector("#publisher-count").innerHTML = data.counter
 		});
   }
 
   contender() {
     // this.outputTarget.textContent = 'Hello, Stimulus!'
-    console.log("contender")
+	fetchWithToken(`/clashes/${this.clashIdValue}/votes`, {
+		method: "POST",
+		headers: { 
+			accept: "application/json",
+			'Content-Type': "application/json"
+		},
+		body: JSON.stringify({party: "contender"}) 
+	})
+		.then(response => response.json())
+		.then((data) => {
+			console.log(data);
+			document.querySelector("#contender-count").innerHTML = data.counter
+
+		});
   }
-
-
 }

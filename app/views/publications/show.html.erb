@@ -29,8 +29,8 @@
 							</div>
 						</div>
 						<div class="d-flex justify-content-between pt-3">
-							<p> <span >0</span> soutiens <i class="far fa-thumbs-up"></i></p>
-							<p> <span>0</span> soutiens <i class="far fa-thumbs-up"></i></p>
+							<p> <span id="publisher-count" > <%= @publisher_counter %> </span> soutiens <i class="far fa-thumbs-up"></i></p>
+							<p> <span  id="contender-count"><%= @contender_counter %> </span> soutiens <i class="far fa-thumbs-up"></i></p>
 						</div>
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="mr-2">
@@ -130,8 +130,6 @@
 					</div>
 					<% end %>
 					<% end %>
-
-
 					<% end %>
 				</div>
 			</span>

@@ -5,11 +5,10 @@ class VotesController < ApplicationController
     @vote.clash = Clash.find(params[:clash_id])
     @vote.user = current_user
     @vote.party = params[:party]
-    @counter = @vote.clash.votes.where(party: params[:party]).count
     if @vote.save!
       respond_to do |format|
         format.html { redirect_to publication_path(@vote.clash.clash_request.publication)}
-        format.json { render json: { success: true, counter: @counter } }
+        format.json { render json: { success: true, counter: @vote.clash.votes.where(party: params[:party]).count } }
       end
     else
       respond_to do |format|
