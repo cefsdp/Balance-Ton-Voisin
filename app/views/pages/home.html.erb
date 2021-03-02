@@ -254,11 +254,11 @@
       <%= link_to publication_path(clash.clash_request.publication) do %>
         <div class="card-clash">
           <div class="users-avatar">
-            <div class="user1-avatar"><%= cl_image_tag clash.clash_request.publication.user.profile_picture, class: "avatar-large" %></div>
-            <div class="user2-avatar"><%= cl_image_tag clash.clash_request.user.profile_picture, class: "avatar-large" %></div>
+            <div class="user1-avatar"><%= cl_image_tag clash.clash_request.publication.user.profile_picture, class: "avatar-large-clash" %></div>
+            <div class="user2-avatar"><%= cl_image_tag clash.clash_request.user.profile_picture, class: "avatar-large-clash" %></div>
           </div>
           <div class="content-card-clash">
-            <div class="usernames row">
+            <div class="usernames mt-3 row">
               <div class="col-5 d-flex justify-content-end"><%=clash.clash_request.publication.user.username%></div>
               <div class="col-2">⚡️</div>
               <div class="col-5 d-flex justify-content-start"> <%=clash.clash_request.user.username%></div>
