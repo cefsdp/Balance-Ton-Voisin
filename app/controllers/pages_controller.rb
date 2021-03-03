@@ -8,8 +8,7 @@ class PagesController < ApplicationController
     @disable_nav = true if current_user == nil
     @publications = policy_scope(Publication)
     @clashs = policy_scope(Clash)
-    @clash
-    @hotpublications = Publication.joins(:comments).group("publications.id").order("count(publications.id)")
+    publidetector
     @publication = Publication.new
   end
 
@@ -32,5 +31,27 @@ class PagesController < ApplicationController
   end
 
   def components
+  end
+
+  private
+
+  def publidetector
+    @AllClashes = []
+    @Clash_id = []
+    @AllPublications = []
+    @publications.each do |publi|
+      if publi.clash_requests == []
+        @AllPublications << publi
+      else
+        publi.clash_requests.each do |clash_requ|
+          if clash_requ.clashes == []
+            @AllPublications << publi
+          else
+            @AllClashes << publi
+            @Clash_id << clash_requ
+          end
+        end
+      end
+    end
   end
 end

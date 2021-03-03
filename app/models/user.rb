@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :clash_requests
+  has_many :clashes, through: :clash_request
 
   has_one_attached :photo
   has_many :publications, dependent: :destroy

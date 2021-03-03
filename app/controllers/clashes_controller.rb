@@ -8,6 +8,7 @@ class ClashesController < ApplicationController
     @publication = Publication.find(params[:publication_id])
     @clash_request = ClashRequest.find(params[:clash_request_id])
     @clash.clash_request = @clash_request
+    @clash_request.update(status: 'confirmed')
     @clash.publisher_votes = 0
     @clash.contender_votes = 0
     @clash.countdown_end = DateTime.now + 1.day
