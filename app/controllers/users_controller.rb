@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @user.ranking
     @publications = policy_scope(Publication).where(user: @user)
     @comments = policy_scope(Comment).where(user: @user)
+    @clash_requests = policy_scope(ClashRequest).where(user: @user).where(status: "confirmed")
+    @clashs = []
+    @clash_requests.each do |request|
+      @clashs << policy_scope(Clash).where(clash_request_id: request)
+    end
     check_notif_read
     @disable_nav = true
   end
