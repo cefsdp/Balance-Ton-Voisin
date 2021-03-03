@@ -2,49 +2,35 @@
 
 	<div class="bodypostshow">
 		<div class="cardpostshow">
-
 			<% if @clash %>
 				<h1>CLASH !</h1>
 
 				<div class="card-clash-focus">
-		          <div class="d-flex justify-content-between align-items-center">
-		            <div class="d-flex align-items-center">
-		              <%= cl_image_tag @publication.user.profile_picture, class: " border avatar users-avatar user1-avatar"%>
-		              <h2 class="pl-3"> <%= @publication.user.username %> </h2>
-
-		            </div>
-		              <h1>⚡️</h1>
-		            <div class="d-flex align-items-center">
-		            	<h2 class="pr-3"> <%= @clash.clash_request.user.username %> </h2>
-		              <%= cl_image_tag @clash.clash_request.user.profile_picture, class: " border avatar users-avatar user1-avatar"%>
-		            </div>
-		          </div>
-		          <div class="d-flex justify-content-between pt-3">
+		        	<div class="d-flex justify-content-between align-items-center">
+		            	<div class="d-flex align-items-center">
+		              		<%= cl_image_tag @publication.user.profile_picture, class: " border avatar users-avatar user1-avatar"%>
+		              		<h2 class="pl-3"> <%= @publication.user.username %> </h2>
+		            	</div>
+		              	<h1>⚡️</h1>
+		            	<div class="d-flex align-items-center">
+		            		<h2 class="pr-3"> <%= @clash.clash_request.user.username %> </h2>
+		              		<%= cl_image_tag @clash.clash_request.user.profile_picture, class: " border avatar users-avatar user1-avatar"%>
+		            	</div>
+		          	</div>
+		          	<div class="d-flex justify-content-between pt-3">
 			          <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
 			          <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
-				  </div>
-		          <div class="d-flex justify-content-between align-items-center">
-		            <div class="mr-2">
-		              <p><%= @publication.content %> </p>
-		            </div>
-		            <div class="ml-2">
-		              <p> <%= @clash.clash_request.content %> </p>
-		            </div>
-		          </div>
-		          <div class="d-flex justify-content-end text-secondary">
-		          </div>
-		        </div>
-		      </div>
-
-
-
-
-
-
-
-
-
-
+				  	</div>
+		          	<div class="d-flex justify-content-between align-items-center">
+		            	<div class="mr-2">
+		              		<p><%= @publication.content %> </p>
+		            	</div>
+		            	<div class="ml-2">
+		              		<p> <%= @clash.clash_request.content %> </p>
+		            	</div>
+		        	</div>
+		        	<div class="d-flex justify-content-end text-secondary"></div>
+		    	</div>
 
 
 			<% else %>
@@ -71,92 +57,87 @@
 
 
 				<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
-
 					<%= link_to new_publication_clash_request_path(@publication) do %>
-					<div class="d-flex justify-content-center mt-5">
-						<div class="btn btn-clash">CLASH</div>
-					</div>
+						<div class="d-flex justify-content-center mt-5">
+							<div class="btn btn-clash">CLASH</div>
+						</div>
 					<% end %>
 				<% end %>
 
 			    <% @clash_requests.each do |request| %>
-	              <% if policy(request).show? %>
-		              <div class="card-post post-show">
-
-		                <div class="posthead">
-							<%= link_to user_path(request.user) do  %>
-							<div class="user-data">
-								<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
-								<div class="username"><%= request.user.username %></div>
+	              	<% if policy(request).show? %>
+		              	<div class="card-post post-show">
+		                	<div class="posthead">
+								<%= link_to user_path(request.user) do  %>
+									<div class="user-data">
+										<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
+										<div class="username"><%= request.user.username %></div>
+									</div>
+								<% end %>
+								<span>
+									<span class="comcreation">
+										<%= request.created_at.strftime("%d/%m/%Y") %>
+									</span>
+									<span>
+								    	<% if policy(request).edit? %>
+			                	      		<%= link_to edit_clash_request_path(request) do %>
+			                		    		<i class="far fa-edit edit"></i>
+			                	      		<% end %>
+			                        	<% end %>
+									</span>
+									<span>
+										<% if policy(request).destroy? %>
+											<%= link_to clash_request_path(request), method: :delete do %>
+												<i class="far fa-trash-alt delete"></i>
+											<% end %>
+										<% end %>
+									</span>
+								</span>
 							</div>
-							<% end %>
-							<span>
-								<span class="comcreation">
-									<%= request.created_at.strftime("%d/%m/%Y") %>
-								</span>
-								<span>
-								    <% if policy(request).edit? %>
-			                	      <%= link_to edit_clash_request_path(request) do %>
-			                		    <i class="far fa-edit edit"></i>
-			                	      <% end %>
-			                        <% end %>
-								</span>
-								<span>
-									<% if policy(request).destroy? %>
-									    <%= link_to clash_request_path(request), method: :delete do %>
-			                	            <i class="far fa-trash-alt delete"></i>
-			                            <% end %>
-									<% end %>
-								</span>
-							</span>
-						</div>
-		                <div class="description"> <%= request.content %> </div>
+		                	<div class="description"> <%= request.content %> </div>
 
-		                <% if @publication.user == current_user %>
-			                <div class="text-right">
-			                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
-			                    	<div class="btn btn-flat">Accepter le clash</div>
-			                    <% end %>
-			                </div>
-		                <% end %>
+		                	<% if @publication.user == current_user %>
+			                	<div class="text-right">
+			                    	<%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
+			                    		<div class="btn btn-flat">Accepter le clash</div>
+			                    	<% end %>
+			                	</div>
+		                	<% end %>
 
 
 
-		              </div>
-	              <% end %>
+		              	</div>
+	              	<% end %>
 			    <% end %>
 
 
 			<% end %>
-
-
 		</div>
-
 		<div class="cardpostcoms">
 			<div class="commentcontainer">
 				<% if @comments.count == 0 %>
 					<div class="pitimsg"> Soyez le premier à commenter la publication de <%= @publication.user.username %></div>
 				<% else %>
 					<% @comments.each_with_index do |comment, index| %>
-							<div class="comment">
-								<%= link_to user_path(comment.user) do  %>
-									<div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
-								<% end %>
-									<div class="combox">
-									<div class="comusername">
-										<span>
-											<%= link_to user_path(comment.user) do  %>
-												<%= comment.user.username %>
-											<% end %>
-										</span>
-										<span>
-											<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y") %></span>
-											<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
-										</span>
-									</div>
-									<div class="comtext"> <%= comment.content %> </div>
+						<div class="comment">
+							<%= link_to user_path(comment.user) do  %>
+								<div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
+							<% end %>
+							<div class="combox">
+								<div class="comusername">
+									<span>
+										<%= link_to user_path(comment.user) do  %>
+											<%= comment.user.username %>
+										<% end %>
+									</span>
+									<span>
+										<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y") %></span>
+										<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
+									</span>
 								</div>
+								<div class="comtext"> <%= comment.content %> </div>
 							</div>
+						</div>
 					<% end %>
 				<% end %>
 			</div>
@@ -167,4 +148,5 @@
 			<% end %>
 		</div>
 	</div>
+	
 </div>
