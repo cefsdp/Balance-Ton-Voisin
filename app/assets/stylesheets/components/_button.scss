@@ -14,7 +14,21 @@
     opacity: 1;
     text-decoration: none;
   }
+  .btn-ghost-2 {
+    color: #8731F5;
+    border: 1px solid #8731f5;
+    padding: 8px 24px;
+    border-radius: 40px;
+    font-weight: lighter;
+  }
 
+    .btn-ghost-2:hover {
+    color: #8731F5;
+    border: 1px solid #8731f5;
+    padding: 8px 24px;
+    border-radius: 40px;
+    font-weight: lighter;
+  }
   .btn-flat {
     color: white;
     padding: 8px 24px;
@@ -26,6 +40,18 @@
   .btn-flat:hover {
     background: #7138ba;
     color: white;
+  }
+  .btn-flat-2 {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 40px;
+    background: #8731f5;
+  }
+  .btn-flat-2:hover {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 40px;
+    background: #8731f5;
   }
 
   .btn-clash {
