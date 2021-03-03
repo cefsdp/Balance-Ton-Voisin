@@ -264,7 +264,7 @@
               <div class="col-5 d-flex justify-content-start"> <%=clash.clash_request.user.username%></div>
             </div>
 
-            <div class="countdown d-flex justify-content-center"><p class="text-secondary">End of clash: <%= clash.countdown_end.strftime("%d/%m/%Y") %></p></div>
+            <div class="countdown d-flex justify-content-center"><p class="text-secondary">Fin du Clash: <%= clash.countdown_end.strftime("%d/%m/%Y") %></p></div>
             <div class="d-flex justify-content-around row">
               <div class="content1 col-6 "><%=clash.clash_request.publication.content.truncate(70, separator: ' ')%></div>
               <div class="content2 col-6"><%=clash.clash_request.content.truncate(70, separator: ' ')%></div>
