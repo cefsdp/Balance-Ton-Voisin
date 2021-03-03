@@ -40,6 +40,7 @@ class CommentsController < ApplicationController
     comment_destroy
     @comment.user.score -= 2
     @comment.user.ranking
+    @comment.user.save!
     redirect_to publication_path(@comment.publication)
   end
 
