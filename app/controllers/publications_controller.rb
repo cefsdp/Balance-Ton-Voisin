@@ -30,6 +30,7 @@ class PublicationsController < ApplicationController
     authorize @publication
     @publication.user = current_user
     @publication.user.score += 3 if @publication.save!
+    @publication.user.ranking
     @publication.user.save!
     redirect_to publications_path if @publication.save!
   end
@@ -49,9 +50,9 @@ class PublicationsController < ApplicationController
   def destroy
     @publication = Publication.find(params[:id])
     authorize @publication
-    @publication.destroy
     @publication.user.score -= 3
     @publication.user.save!
+    @publication.destroy
     redirect_to publications_path
   end
 

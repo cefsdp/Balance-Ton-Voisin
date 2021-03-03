@@ -2,6 +2,7 @@
 	<div class="bodypostshow">
 		<div class="cardpostshow">
 			<% if @clash %>
+
 				<div 	data-controller="votes" 
 						data-votes-clash-id-value="<%= @clash.id %>"
 						data-votes-vote-publi-id-value="<%= @vote_for_publisher.first.id if @vote_for_publisher.first %>"
@@ -68,6 +69,7 @@
 						</div>
 					</div>	
 				</div>
+
 			<% else %>
 				<div class="card-post post-show">
 					<div class="posthead">
@@ -78,7 +80,7 @@
 						</div>
 						<% end %>
 						<span>
-							<span class="comcreation"><%= @publication.created_at %></span>
+							<span class="comcreation"><%= @publication.created_at.strftime("%d/%m/%Y") %></span>
 							<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
 							<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
 						</span>
@@ -89,9 +91,9 @@
 				</div>
 				<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
 					<%= link_to new_publication_clash_request_path(@publication) do %>
-					<div class="d-flex justify-content-center mt-5">
-						<div class="btn btn-clash">CLASH</div>
-					</div>
+						<div class="d-flex justify-content-center mt-5">
+							<div class="btn btn-clash">CLASH</div>
+						</div>
 					<% end %>
 				<% end %>
 
@@ -99,6 +101,7 @@
 					<% if policy(request).show? %>
 						<div class="card-post post-show">
 							<div class="posthead">
+
 								<%= link_to user_path(request.user) do  %>
 									<div class="user-data">
 										<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
@@ -107,6 +110,7 @@
 								<% end %>
 								<span>
 									<span class="comcreation">
+
 										<%= request.created_at %>
 									</span>
 									<span>
@@ -121,10 +125,12 @@
 										<%= link_to clash_request_path(request), method: :delete do %>
 										<i class="far fa-trash-alt delete"></i>
 										<% end %>
+
 										<% end %>
 									</span>
 								</span>
 							</div>
+
 							<div class="description"> 
 								<%= request.content %> 
 							</div>
@@ -141,7 +147,6 @@
 			<% end %>
 		</div>
 
-
 		<div class="cardpostcoms">
 			<div class="commentcontainer">
 				<% if @comments.count == 0 %>
@@ -152,9 +157,11 @@
 					<% @comments.each_with_index do |comment, index| %>
 						<div class="comment">
 							<%= link_to user_path(comment.user) do  %>
+
 								<div>
 									<%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %>
 								</div>
+
 							<% end %>
 							<div class="combox">
 								<div class="comusername">
@@ -178,7 +185,9 @@
 								</div>
 								<div class="comtext"> 
 									<%= comment.content %> 
+
 								</div>
+								<div class="comtext"> <%= comment.content %> </div>
 							</div>
 						</div>
 					<% end %>
@@ -191,4 +200,5 @@
 			<% end %>
 		</div>
 	</div>
+	
 </div>

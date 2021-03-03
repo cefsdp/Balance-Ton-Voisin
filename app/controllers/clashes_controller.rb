@@ -12,6 +12,10 @@ class ClashesController < ApplicationController
     @clash.contender_votes = 0
     @clash.countdown_end = DateTime.now + 1.day
     authorize @clash
+    @clash_request.user.score += 3 if @clash.save!
+    @clash_request.user.ranking
+    @publication.user.score += 3 if @clash.save
+    @publication.user.ranking
     redirect_to publication_path(@publication) if @clash.save!
   end
 

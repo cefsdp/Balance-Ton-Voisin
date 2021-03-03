@@ -5,7 +5,7 @@
       <div class="col-8 présentation">
         <div class="d-flex justify-content-left align-items-center my-4">
           <%= image_tag "logo.png", alt: "alttext", width: 50, class: "mr-2" %>
-          <h1> #BalanceTonVoisin </h1>
+          <h2 class="mt-2 ml-2"> Dénoncer c'est Gagner </h2>
         </div>
         <p> Dans le contexte du Covid19, le business de la délation est en plein boom ! Ton voisin ne respecte pas le couvre-feu ? Ton chat ne porte pas de masque ? Dénonce et reçoit des récompenses appropriées ! </p>
         <div class="card-clash-focus">
@@ -48,7 +48,7 @@
     <div class="row pt-4">
       <div class="col-12 pb-3 mt-3 ml-0 pl-0">
         <div class="d-flex justify-content-left align-items-center">
-          <div class="ml-3"><h2> Balance ton Voisin c'est</h2></div>
+          <div class="ml-3 mb-3"><h2> Beaucoup ont déjà gagné !</h2></div>
         </div>
         <div class="row cards-stat">
           <div class="col-3 list-unstyled">
@@ -248,7 +248,7 @@
 </div>
 
 <div class="container mb-3">
-  <h2 class="mt-5"><strong>Les Clashs à la Une</strong></h2>
+  <h2 class="mt-5"><strong>Nos Supers Clashs 🤩</strong></h2>
   <div class="cards">
     <% @clashs.reverse.first(3).each do |clash| %>
       <%= link_to publication_path(clash.clash_request.publication) do %>
@@ -264,7 +264,7 @@
               <div class="col-5 d-flex justify-content-start"> <%=clash.clash_request.user.username%></div>
             </div>
 
-            <div class="countdown d-flex justify-content-center"><p class="text-secondary">End of clash: <%= clash.countdown_end %></p></div>
+            <div class="countdown d-flex justify-content-center"><p class="text-secondary">Fin du Clash: <%= clash.countdown_end.strftime("%d/%m/%Y") %></p></div>
             <div class="d-flex justify-content-around row">
               <div class="content1 col-6 "><%=clash.clash_request.publication.content.truncate(70, separator: ' ')%></div>
               <div class="content2 col-6"><%=clash.clash_request.content.truncate(70, separator: ' ')%></div>
@@ -278,7 +278,7 @@
 
 
 <div class="container my-5">
-  <h2 class="my-4"><strong>Les plaintes les plus chaudes de ta région</strong></h2>
+  <h2 class="my-4"><strong>Les plaintes les plus chaudes de ta région 🤯</strong></h2>
   <div class="cards">
       <% @hotpublications.reverse.first(3).each do |publication| %>
         <%= link_to publication_path(publication) do %>

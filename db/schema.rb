@@ -51,7 +51,9 @@ ActiveRecord::Schema.define(version: 2021_03_02_152828) do
     t.integer "contender_votes"
     t.integer "publisher_votes"
     t.bigint "clash_request_id"
+
     t.datetime "countdown_end"
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["clash_request_id"], name: "index_clashes_on_clash_request_id"

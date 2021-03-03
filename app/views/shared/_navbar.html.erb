@@ -2,7 +2,7 @@
   <%= link_to root_path, class: "navbar-brand" do %>
   <div class="d-flex text-left align-items-center">
     <%= image_tag "logo.png", alt: "alttext"%>
-    <h3 class="pt-2 title-website"> #Balancetonvoisin</h3>
+    <h3 class="pt-2 title-website"> Dénoncer c'est Gagner</h3>
   </div>
   <% end %>
 
@@ -17,14 +17,14 @@
         <li class="nav-item dropdown">
           <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.count != 0 %><div class="notif_indic"><%= current_user.notifications.count %></div><% end %>
           <div class="dropdown-menu dropdown-menu-right dropnotifs" aria-labelledby="navbarDropdown">
-            
+
             <% if current_user.notifications.count == 0 %>
               <div class="dropdown-item notif">
                         <div class="notext">Vous n'avez pas de nouvelles notifications</div>
             <% else %>
               <% current_user.notifications.reverse.each do |notification| %>
                 <% # raise %>
-                  <% if notification.notification_type = "comment" %>
+                  <% if notification.notification_type == "comment" %>
 
                     <%= link_to publication_path(notification.params['data']['publication_id']) do %>
                       <div class="dropdown-item notif">
@@ -32,13 +32,24 @@
                         <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params['data']['user_id']).username %></div>
                       </div>
                     <% end %>
+
                   
-                  <% elsif notification.notification_type = "clashrequest" %>
+                  <% elsif notification.notification_type == "clashrequest" %>
+
 
                     <%= link_to publication_path(notification.params['data']['publication_id']) do %>
                       <div class="dropdown-item notif">
                         <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
                         <div class="text">Vous avez une demande de clash par <%= User.find(notification.params['data']['user_id']).username %></div>
+                      </div>
+                    <% end %>
+
+                  <% elsif notification.notification_type == "ranking" %>
+
+                    <%= link_to user_path(notification.user_id) do %>
+                      <div class="dropdown-item notif">
+                        <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
+                        <div class="text">Vous êtes devenu un <%= User.find(notification.user_id).description %></div>
                       </div>
                     <% end %>
 
@@ -49,7 +60,7 @@
         </li>
       </ul>
     <% end %>
-  
+
 
     <% # Avatar dropdown %>
 

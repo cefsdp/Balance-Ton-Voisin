@@ -25,7 +25,7 @@
                 <div class="username"><%= publication.user.username %></div>
               <% end %>
             </div>
-            <div class="text-secondary pt-3"><%= publication.created_at.strftime("%d/%m/%Y à %H:%M") %></div>
+            <div class="text-secondary pt-3"><%= publication.created_at.strftime("%d/%m/%Y") %></div>
           </div>
           <div class="description">
             <%= publication.content.truncate(300, separator: ' ') %>
@@ -55,6 +55,7 @@
               </div>
               <div class="d-flex justify-content-between pt-3">
                 <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
+                <p class="text-secondary">Fin du Clash: <%= clash[0].countdown_end.strftime("%d/%m/%Y") %></p>
                 <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
               </div>
               <div class="d-flex justify-content-between align-items-center row">
