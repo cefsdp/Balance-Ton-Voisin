@@ -57,13 +57,37 @@ class CommentsController < ApplicationController
   end
 
   def notification_builder
-    @notification = Notification.create(notification_type: "comment", user_id: @publication.user_id, params: { data: @comment })
-    notificationcable
+    if @publication.clash_requests == []
+      @notification = Notification.create(notification_type: "comment", user_id: @publication.user_id, params: { data: @comment })
+      notificationcable
+    else
+      @publication.clash_requests.each do |clash_requ|
+        if clash_requ.clashes != []
+          @notification = Notification.create(notification_type: "comment", user_id: clash_requ.user_id, params: { data: @comment })
+          @user2 = clash_requ.user_id
+          notificationcableclash
+        else
+          @notification = Notification.create(notification_type: "comment", user_id: @publication.user_id, params: { data: @comment })
+          notificationcable
+        end
+      end
+    end
   end
 
   def notificationcable
     NotificationChannel.broadcast_to(
       @publication.user,
+      txt: `Vous avez un nouveau commentaire de #{@comment.user}`
+    )
+  end
+
+  def notificationcableclash
+    NotificationChannel.broadcast_to(
+      @publication.user,
+      txt: `Vous avez un nouveau commentaire de #{@comment.user}`
+    )
+    NotificationChannel.broadcast_to(
+      @user2,
       txt: `Vous avez un nouveau commentaire de #{@comment.user}`
     )
   end
