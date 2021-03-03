@@ -58,7 +58,7 @@
 						</div>
 						<% end %>
 						<span>
-							<span class="comcreation"><%= @publication.created_at %></span>
+							<span class="comcreation"><%= @publication.created_at.strftime("%d/%m/%Y") %></span>
 							<span><% if policy(@publication).destroy? %><%= link_to edit_publication_path(@publication) do %><i class="far fa-edit edit"></i><% end %><% end %></span>
 							<span><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %><% end %></span>
 						</span>
@@ -92,7 +92,7 @@
 							<% end %>
 							<span>
 								<span class="comcreation">
-									<%= request.created_at %>
+									<%= request.created_at.strftime("%d/%m/%Y") %>
 								</span>
 								<span>
 								    <% if policy(request).edit? %>
@@ -111,7 +111,7 @@
 							</span>
 						</div>
 		                <div class="description"> <%= request.content %> </div>
-		                
+
 		                <% if @publication.user == current_user %>
 			                <div class="text-right">
 			                    <%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
@@ -150,7 +150,7 @@
 											<% end %>
 										</span>
 										<span>
-											<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></span>
+											<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y") %></span>
 											<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
 										</span>
 									</div>

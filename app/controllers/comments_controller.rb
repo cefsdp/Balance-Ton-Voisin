@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.publication = @publication
     @comment.user.score += 2 if @comment.save!
+    @comment.user.ranking
     @comment.user.save!
     notification_builder
     redirect_to publication_path(@publication) if @comment.save!
@@ -37,6 +38,8 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @publication = @comment.publication
     comment_destroy
+    @comment.user.score -= 2
+    @comment.user.ranking
     redirect_to publication_path(@comment.publication)
   end
 
@@ -48,7 +51,6 @@ class CommentsController < ApplicationController
 
   def comment_destroy
     authorize @comment
-    @comment.user.score -= 2
     @comment.user.save!
     @comment.destroy
   end
