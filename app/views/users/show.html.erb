@@ -8,9 +8,9 @@
         <h3 class="pt-2"><%= @user.username %>
       <% end %>
       <% if @user == current_user %>
-      	<%= link_to edit_user_registration_path(@user) do  %>
-      	  <i class="far fa-edit edit" id="edit-profile"></i>
-      	 <% end %>
+        <%= link_to edit_user_registration_path(@user) do  %>
+          <i class="far fa-edit edit" id="edit-profile"></i>
+        <% end %>
       <% end %>
       </h3>
       <p class="text-secondary"><%= @user.description %></p>
@@ -18,29 +18,81 @@
 
   <div class="profile-content">
     <div class="col-4 user-infos">
-    	<div class="card-post-profile">
-    		<p> <%= @publications.count %> publications</p>
-    		<p> <%= @comments.count %> participations </p>
-    	</div>
+      <div class="card-post-profile">
+        <p> <%= @publications.count %> publications</p>
+        <p> <%= @comments.count %> participations </p>
+      </div>
     </div>
 
-  	<div class="col-8 pr-5 user-publications">
-  		<% @publications.reverse.each do |publication| %>
-  			<%= link_to publication_path(publication) do %>
-  				<div class="card-post-profile">
-  					<div class="posthead">
-  						<div class="user-data">
-  							<div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
-  							<div class="username"><%= publication.user.username %></div>
-  						</div>
-  			<div class="text-secondary pt-3"><%= publication.created_at %></div>
-  					</div>
-  					<div class="description">
-  						<%= publication.content.truncate(300, separator: ' ') %>
-  					</div>
-  				</div>
-  			<% end %>
-  		<% end %>
-  	</div>
+    <div class="col-8 pr-5 user-publications">
+      <% @publications.reverse.each do |publication| %>
+        <% if publication.clash_requests == [] %>
+          <%= link_to publication_path(publication) do %>
+            <div class="card-post-profile">
+              <div class="posthead">
+                <div class="user-data">
+                  <div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
+                  <div class="username"><%= publication.user.username %></div>
+                </div>
+                <div class="text-secondary pt-3"><%= publication.created_at.strftime("%d/%m/%Y") %></div>
+              </div>
+              <div class="description">
+                <%= publication.content.truncate(300, separator: ' ') %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% publication.clash_requests.each do |clash_request| %>
+          <% if (clash = Clash.all.where(clash_request_id: clash_request.id)).exists?%>
+            <%= link_to publication_path(clash_request.publication) do %>
+              <div class="card-clash-2">
+                <div class="row">
+                  <div class="col-5 d-flex justify-content-start align-items-center">
+                    <%= cl_image_tag clash[0].clash_request.publication.user.profile_picture, class: " border avatar-large"%>
+                    <div class="username pl-3">
+                    <%= clash[0].clash_request.publication.user.username %>
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center"><h2>⚡️</h2></div>
+                  <div class="col-5 d-flex justify-content-end align-items-center">
+                    <div class="username pr-3"> <%= clash[0].clash_request.user.username %> </div>
+                    <%= cl_image_tag clash[0].clash_request.user.profile_picture, class: " border avatar-large"%>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between pt-3">
+                  <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
+                  <p class="text-secondary">End of clash: <%= clash[0].countdown_end.strftime("%d/%m/%Y") %></p>
+                  <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center row">
+                  <div class="col-6">
+                    <p><%= clash[0].clash_request.publication.content %> </p>
+                  </div>
+                  <div class="col-6">
+                    <p> <%= clash[0].clash_request.content %> </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+        <% if Clash.all.where(clash_request_id: clash_request.id).exists? == false%>
+          <%= link_to publication_path(publication) do %>
+              <div class="card-post-profile">
+                <div class="posthead">
+                  <div class="user-data">
+                    <div><%= cl_image_tag publication.user.profile_picture, class: "avatar-large" %></div>
+                    <div class="username"><%= publication.user.username %></div>
+                  </div>
+                  <div class="text-secondary pt-3"><%= publication.created_at.strftime("%d/%m/%Y") %></div>
+                </div>
+                <div class="description">
+                  <%= publication.content.truncate(300, separator: ' ') %>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
