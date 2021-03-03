@@ -6,6 +6,8 @@ class VotesController < ApplicationController
     @vote.user = current_user
     @vote.party = params[:party]
     if @vote.save!
+      @vote.user.score += 1
+      @vote.user.ranking
       respond_to do |format|
         format.html { redirect_to publication_path(@vote.clash.clash_request.publication)}
         format.json { render json: { success: true, counter: @vote.clash.votes.where(party: params[:party]).count, voteId: @vote.id } }
@@ -20,8 +22,11 @@ class VotesController < ApplicationController
 
   def destroy
     @vote = Vote.find(params[:id])
+    @vote.user = current_user
     authorize @vote
     if @vote.destroy!
+      @vote.user.score -= 1
+      @vote.user.ranking
       respond_to do |format|
         format.html { redirect_to publication_path(@vote.clash.clash_request.publication)}
         format.json { render json: { success: true, counter: @vote.clash.votes.where(party: params[:party]).count } }
