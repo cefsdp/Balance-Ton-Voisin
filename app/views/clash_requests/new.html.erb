@@ -1,12 +1,8 @@
-<div class="container col-4 mt-5 offset-4">
-
-  <% if ClashRequest.where({publication: @publication, user: current_user}).exists? %>
-  	<h3>Vous avez déjà demandé un clash à <%= @publication.user.username  %>!</h3>
-
-  <% else %>
-	  <%= simple_form_for([ @publication, @clash_request ]) do |f| %>
-	    <%= f.input :content, label: "Pourquoi souhaitez-vous clasher cet utilisateur ?" %>
-	    <%= f.submit "Demander le clash" %>
-	  <% end %>
-  <% end %>
+<div class="container col-4 mt-5 offset-4 d-flex justify-content-center align-items-center">
+    <div class="btn btn-ghost-2">
+      <%= simple_form_for([ @publication, @clash_request ]) do |f| %>
+        <%= f.input :content, label: "Pourquoi souhaitez-vous clasher cet utilisateur ?"%>
+        <%= f.submit "Demander le clash", class:"btn btn-flat-2" %>
+      <% end %>
+    </div>
 </div>
