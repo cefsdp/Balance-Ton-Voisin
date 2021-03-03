@@ -1,80 +1,98 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-  <div class="d-flex text-left align-items-center">
-    <%= image_tag "logo.png", alt: "alttext"%>
-    <h3 class="pt-2 title-website"> Dénoncer c'est Gagner</h3>
-  </div>
-  <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <% # Notifications %>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <% if user_signed_in? %>
-      <ul class="navbar-nav mr-auto notifs">
-        <li class="nav-item dropdown">
-          <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.count != 0 %><div class="notif_indic"><%= current_user.notifications.count %></div><% end %>
-          <div class="dropdown-menu dropdown-menu-right dropnotifs" aria-labelledby="navbarDropdown">
-
-            <% if current_user.notifications.count == 0 %>
-              <div class="dropdown-item notif">
-                        <div class="notext">Vous n'avez pas de nouvelles notifications</div>
-            <% else %>
-              <% current_user.notifications.reverse.each do |notification| %>
-                <% # raise %>
-                  <% if notification.notification_type == "comment" %>
-
-                    <%= link_to publication_path(notification.params['data']['publication_id']) do %>
-                      <div class="dropdown-item notif">
-                        <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
-                        <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params['data']['user_id']).username %></div>
-                      </div>
-                    <% end %>
-
-                  
-                  <% elsif notification.notification_type == "clashrequest" %>
-
-
-                    <%= link_to publication_path(notification.params['data']['publication_id']) do %>
-                      <div class="dropdown-item notif">
-                        <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
-                        <div class="text">Vous avez une demande de clash par <%= User.find(notification.params['data']['user_id']).username %></div>
-                      </div>
-                    <% end %>
-
-                  <% elsif notification.notification_type == "ranking" %>
-
-                    <%= link_to user_path(notification.user_id) do %>
-                      <div class="dropdown-item notif">
-                        <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
-                        <div class="text">Vous êtes devenu un <%= notification.params['data'] %></div>
-                      </div>
-                    <% end %>
-
-                  <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
-      </ul>
-    <% end %>
-
-
-    <% # Avatar dropdown %>
-
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-
-        <li class="nav-item dropdown">
-          <%= cl_image_tag current_user.profile_picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon row">
+    <div class="col-4 d-flex justify-content-start">
+      <%= link_to root_path, class: "navbar-brand" do %>
+      <div class="d-flex text-left align-items-center">
+        <%= image_tag "logo.png", alt: "alttext"%>
+        <h3 class="pt-2 title-website"> Dénoncer c'est Gagner</h3>
+      </div>
       <% end %>
-    </ul>
-  </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="col-4 d-flex justify-content-center">
+      <% # score %>
+      <div class="score">
+        <div class="head">
+          <div class="desc"><%= current_user.description %></div>
+        </div>
+        <div class="body">
+          <div class="progress grey">
+            <div class="progress-bar violet" role="progressbar" style="width: <%= current_user.score.to_i * 100 / 40 %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="40"><%= current_user.score %>pts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 d-flex justify-content-end">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <% # Notifications %>
+        <% if user_signed_in? %>
+          <ul class="navbar-nav mr-auto notifs">
+            <li class="nav-item dropdown">
+              <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.count != 0 %><div class="notif_indic"><%= current_user.notifications.count %></div><% end %>
+              <div class="dropdown-menu dropdown-menu-right dropnotifs" aria-labelledby="navbarDropdown">
+
+                <% if current_user.notifications.count == 0 %>
+                  <div class="dropdown-item notif">
+                            <div class="notext">Vous n'avez pas de nouvelles notifications</div>
+                <% else %>
+                  <% current_user.notifications.reverse.each do |notification| %>
+                    <% # raise %>
+                      <% if notification.notification_type == "comment" %>
+
+                        <%= link_to publication_path(notification.params['data']['publication_id']) do %>
+                          <div class="dropdown-item notif">
+                            <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
+                            <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params['data']['user_id']).username %></div>
+                          </div>
+                        <% end %>
+
+                      
+                      <% elsif notification.notification_type == "clashrequest" %>
+
+
+                        <%= link_to publication_path(notification.params['data']['publication_id']) do %>
+                          <div class="dropdown-item notif">
+                            <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
+                            <div class="text">Vous avez une demande de clash par <%= User.find(notification.params['data']['user_id']).username %></div>
+                          </div>
+                        <% end %>
+
+                      <% elsif notification.notification_type == "ranking" %>
+
+                        <%= link_to user_path(notification.user_id) do %>
+                          <div class="dropdown-item notif">
+                            <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
+                            <div class="text">Vous êtes devenu un <%= notification.params['data'] %></div>
+                          </div>
+                        <% end %>
+
+                      <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+
+
+        <% # Avatar dropdown %>
+
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+
+            <li class="nav-item dropdown">
+              <%= cl_image_tag current_user.profile_picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to "Mon profil", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 </div>
