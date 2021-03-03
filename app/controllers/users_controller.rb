@@ -9,7 +9,22 @@ class UsersController < ApplicationController
     @clash_requests = policy_scope(ClashRequest).where(user: @user).where(status: "confirmed")
     @clashs = []
     @clash_requests.each do |request|
-      @clashs << policy_scope(Clash).where(clash_request_id: request)
+      if request.user == @user
+        @clashs << policy_scope(Clash).where(clash_request_id: request)
+      end
+    end
+    @clashcount = []
+    @clashs.each do |clash|
+      @clashcount << clash
+    end
+    @publications.each do |publication|
+      if publication.clash_requests != []
+        publication.clash_requests.each do |request|
+          if (@clashunit = Clash.all.where(clash_request_id: request)).exists?
+            @clashcount << @clashunit
+          end
+        end
+      end
     end
     check_notif_read
     @disable_nav = true
