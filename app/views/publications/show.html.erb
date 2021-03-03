@@ -1,40 +1,76 @@
 <div class="container pt-5">
-
 	<div class="bodypostshow">
 		<div class="cardpostshow">
 			<% if @clash %>
-				<h1>CLASH !</h1>
 
-				<div class="card-clash-focus">
-		        	<div class="d-flex justify-content-between align-items-center">
-		            	<div class="d-flex align-items-center">
-		              		<%= cl_image_tag @publication.user.profile_picture, class: " border avatar users-avatar user1-avatar"%>
-		              		<h2 class="pl-3"> <%= @publication.user.username %> </h2>
-		            	</div>
-		              	<h1>⚡️</h1>
-		            	<div class="d-flex align-items-center">
-		            		<h2 class="pr-3"> <%= @clash.clash_request.user.username %> </h2>
-		              		<%= cl_image_tag @clash.clash_request.user.profile_picture, class: " border avatar users-avatar user1-avatar"%>
-		            	</div>
-		          	</div>
-		          	<div class="d-flex justify-content-between pt-3">
-			          <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
-			          <p> 0 soutiens <i class="far fa-thumbs-up"></i></p>
-				  	</div>
-		          	<div class="d-flex justify-content-between align-items-center">
-		            	<div class="mr-2">
-		              		<p><%= @publication.content %> </p>
-		            	</div>
-		            	<div class="ml-2">
-		              		<p> <%= @clash.clash_request.content %> </p>
-		            	</div>
-		        	</div>
-		        	<div class="d-flex justify-content-end text-secondary"></div>
-		    	</div>
+				<div 	data-controller="votes" 
+						data-votes-clash-id-value="<%= @clash.id %>"
+						data-votes-vote-publi-id-value="<%= @vote_for_publisher.first.id if @vote_for_publisher.first %>"
+						data-votes-vote-contend-id-value="<%= @vote_for_contender.first.id if @vote_for_contender.first %>">
+					<div class="card-clash-2">
+						<div class="align-items-center">
 
+							<div class="row">
+
+								<%= link_to user_path(@publication.user), class: "col-5" do  %>
+									<div class="d-flex justify-content-center">
+										<%= cl_image_tag @publication.user.profile_picture, class: " border avatar-large"%>
+										<div class="username pl-3"> 
+											<%= @publication.user.username %>
+										</div>
+									</div>
+								<% end %>
+								<h1 class='col-2 d-flex justify-content-center'>⚡️</h1>
+								<div class="align-items-center col-5 d-flex justify-content-center">
+									<%= link_to user_path(@clash.clash_request.user) do %>
+									<div class="d-flex">
+										<div class="username pr-3"> <%= @clash.clash_request.user.username %> </div>
+										<%= cl_image_tag @clash.clash_request.user.profile_picture, class: " border avatar-large"%>
+									</div>
+									<% end %>
+								</div>
+							</div>
+							<div class="row pt-3">
+								<div class='col-5 d-flex justify-content-center'><span id="publisher-count" > <%= @publisher_counter %> </span>&nbspsoutiens</div>
+								<div class="col-2"></div>
+								<div class='col-5 d-flex justify-content-center'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutiens</div>
+							</div>
+							<div class="row py-3">
+								<% if @vote_for_publisher.empty? %>
+									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#publisher">
+										<i id="publi-thumb" class="far fa-thumbs-up"></i>
+									</div>
+								<% else %>
+									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#publisher">
+										<i id="publi-thumb" class="fas fa-thumbs-up"></i>
+									</div>
+								<% end %>
+								
+								<div class="col-2"></div>
+								<% if @vote_for_contender.empty? %>
+									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#contender">
+										<i id="contend-thumb" class="far fa-thumbs-up"></i>
+									</div>
+								<% else %>
+									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#contender">
+										<i id="contend-thumb" class="fas fa-thumbs-up"></i>
+									</div>
+								<% end %>
+							</div>
+							<div class="row align-items-center">
+								<div class="col-5 d-flex justify-content-center">
+									<p class="mt-3 mb-0"><%= @publication.content %> </p>
+								</div>
+								<div class="col-2"></div>
+								<div class="col-5 d-flex justify-content-center">
+									<p class="mt-3 mb-0"> <%= @clash.clash_request.content %> </p>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
 
 			<% else %>
-
 				<div class="card-post post-show">
 					<div class="posthead">
 						<%= link_to user_path(@publication.user) do  %>
@@ -52,10 +88,7 @@
 					<div class="description">
 						<span class="showdesc"><%= @publication.content %></span>
 					</div>
-
 				</div>
-
-
 				<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
 					<%= link_to new_publication_clash_request_path(@publication) do %>
 						<div class="d-flex justify-content-center mt-5">
@@ -64,10 +97,11 @@
 					<% end %>
 				<% end %>
 
-			    <% @clash_requests.each do |request| %>
-	              	<% if policy(request).show? %>
-		              	<div class="card-post post-show">
-		                	<div class="posthead">
+				<% @clash_requests.each do |request| %>
+					<% if policy(request).show? %>
+						<div class="card-post post-show">
+							<div class="posthead">
+
 								<%= link_to user_path(request.user) do  %>
 									<div class="user-data">
 										<div><%= cl_image_tag request.user.profile_picture, class: "avatar" %></div>
@@ -76,52 +110,58 @@
 								<% end %>
 								<span>
 									<span class="comcreation">
-										<%= request.created_at.strftime("%d/%m/%Y") %>
+
+										<%= request.created_at %>
 									</span>
 									<span>
-								    	<% if policy(request).edit? %>
-			                	      		<%= link_to edit_clash_request_path(request) do %>
-			                		    		<i class="far fa-edit edit"></i>
-			                	      		<% end %>
-			                        	<% end %>
+										<% if policy(request).edit? %>
+										<%= link_to edit_clash_request_path(request) do %>
+										<i class="far fa-edit edit"></i>
+										<% end %>
+										<% end %>
 									</span>
 									<span>
 										<% if policy(request).destroy? %>
-											<%= link_to clash_request_path(request), method: :delete do %>
-												<i class="far fa-trash-alt delete"></i>
-											<% end %>
+										<%= link_to clash_request_path(request), method: :delete do %>
+										<i class="far fa-trash-alt delete"></i>
+										<% end %>
+
 										<% end %>
 									</span>
 								</span>
 							</div>
-		                	<div class="description"> <%= request.content %> </div>
 
-		                	<% if @publication.user == current_user %>
-			                	<div class="text-right">
-			                    	<%= link_to publication_clash_request_clashes_path({clash_request_id: request,  publication_id: @publication }), method: :post do %>
-			                    		<div class="btn btn-flat">Accepter le clash</div>
-			                    	<% end %>
-			                	</div>
-		                	<% end %>
-
-
-
-		              	</div>
-	              	<% end %>
-			    <% end %>
-
-
+							<div class="description"> 
+								<%= request.content %> 
+							</div>
+							<% if @publication.user == current_user %>
+								<div class="text-right">
+									<%= link_to clash_request_clashes_path(request), method: :post do %>
+									<div class="btn btn-flat">Accepter le clash</div>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				<% end %>
 			<% end %>
 		</div>
+
 		<div class="cardpostcoms">
 			<div class="commentcontainer">
 				<% if @comments.count == 0 %>
-					<div class="pitimsg"> Soyez le premier à commenter la publication de <%= @publication.user.username %></div>
+					<div class="pitimsg">
+						Soyez le premier à commenter la publication de <%= @publication.user.username %>
+					</div>
 				<% else %>
 					<% @comments.each_with_index do |comment, index| %>
 						<div class="comment">
 							<%= link_to user_path(comment.user) do  %>
-								<div><%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %></div>
+
+								<div>
+									<%= cl_image_tag comment.user.profile_picture, class: "avatar-large" %>
+								</div>
+
 							<% end %>
 							<div class="combox">
 								<div class="comusername">
@@ -131,9 +171,21 @@
 										<% end %>
 									</span>
 									<span>
-										<span class="comcreation"><%= comment.created_at.strftime("%d/%m/%Y") %></span>
-										<span><% if policy(comment).destroy? %><%= link_to comment_path(comment), method: :delete do %><i class="far fa-trash-alt"></i><% end %><% end %></span>
+										<span class="comcreation">
+											<%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %>
+										</span>
+										<span>
+											<% if policy(comment).destroy? %>
+												<%= link_to comment_path(comment), method: :delete do %>
+													<i class="far fa-trash-alt"></i>
+												<% end %>
+											<% end %>
+										</span>
 									</span>
+								</div>
+								<div class="comtext"> 
+									<%= comment.content %> 
+
 								</div>
 								<div class="comtext"> <%= comment.content %> </div>
 							</div>
@@ -143,8 +195,8 @@
 			</div>
 
 			<%= simple_form_for [ @publication, @comment ] do |f| %>
-				<%= f.input :content, label: false, :placeholder => 'Commentez' %>
-				<%= f.submit "Publier", id: "submitnewcoms" %>
+			<%= f.input :content, label: false, :placeholder => 'Commentez' %>
+			<%= f.submit "Publier", id: "submitnewcoms" %>
 			<% end %>
 		</div>
 	</div>

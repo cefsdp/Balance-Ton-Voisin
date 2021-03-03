@@ -4,9 +4,9 @@ class ClashesController < ApplicationController
   end
 
   def create
-    @clash = Clash.new
-    @publication = Publication.find(params[:publication_id])
+  	@clash = Clash.new
     @clash_request = ClashRequest.find(params[:clash_request_id])
+  	@publication = @clash_request.publication
     @clash.clash_request = @clash_request
     @clash_request.update(status: 'confirmed')
     @clash.publisher_votes = 0
