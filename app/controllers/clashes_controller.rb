@@ -15,8 +15,10 @@ class ClashesController < ApplicationController
     authorize @clash
     @clash_request.user.score += 10 if @clash.save!
     @clash_request.user.ranking
+    @clash_request.user.save!
     @publication.user.score += 10 if @clash.save
     @publication.user.ranking
+    @publication.user.save!
     redirect_to publication_path(@publication) if @clash.save!
   end
 
