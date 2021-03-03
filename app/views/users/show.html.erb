@@ -21,6 +21,7 @@
       <div class="card-post-profile">
         <p> <%= @publications.count %> publications</p>
         <p> <%= @comments.count %> participations </p>
+        <p> <%= @clashcount.count  %> clashs </p>
       </div>
     </div>
 
@@ -94,7 +95,8 @@
             <% end %>
         <% end %>
       <% end %>
-      <% end %>
+    <% end %>
+
       <% @clashs.each do |clash| %>
       <%= link_to publication_path(clash[0].clash_request.publication) do %>
               <div class="card-clash-2">
