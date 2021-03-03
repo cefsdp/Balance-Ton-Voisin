@@ -24,7 +24,7 @@
             <% else %>
               <% current_user.notifications.reverse.each do |notification| %>
                 <% # raise %>
-                  <% if notification.notification_type = "comment" %>
+                  <% if notification.notification_type == "comment" %>
 
                     <%= link_to publication_path(notification.params['data']['publication_id']) do %>
                       <div class="dropdown-item notif">
@@ -33,7 +33,7 @@
                       </div>
                     <% end %>
                   
-                  <% elsif notification.notification_type = "clashrequest" %>
+                  <% elsif notification.notification_type == "clashrequest" %>
 
                     <%= link_to publication_path(notification.params['data']['publication_id']) do %>
                       <div class="dropdown-item notif">
