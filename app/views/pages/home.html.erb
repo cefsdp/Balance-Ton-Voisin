@@ -13,7 +13,7 @@
             <div class="user-description">
               <%= image_tag "flanders.png", class: "border avatar users-avatar user1-avatar"%>
               <div class="text-danger">
-                <p> 85 soutiens <i class="far fa-thumbs-up"></i></p>
+                <p> 85 soutiens</p>
               </div>
             </div>
               <h2>Flanders</h2>
@@ -22,7 +22,7 @@
             <div class="user-description">
               <%= image_tag "homer.png", class: "border avatar users-avatar user2-avatar"%>
               <div class="text-success">
-                <p> 128 soutiens <i class="far fa-thumbs-up"></i></p>
+                <p> 128 soutiens</p>
               </div>
             </div>
           </div>
@@ -248,7 +248,7 @@
 </div>
 
 <div class="container mb-3">
-  <h2 class="mt-5"><strong>Nos Supers Clashs 🤩</strong></h2>
+  <h2 class="mt-5"><strong>Nos Super Clashs 🤩</strong></h2>
   <div class="cards">
     <% @clashs.reverse.first(3).each do |clash| %>
       <%= link_to publication_path(clash.clash_request.publication) do %>
