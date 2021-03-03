@@ -44,10 +44,9 @@ class PublicationsController < ApplicationController
   def destroy
     @publication = Publication.find(params[:id])
     authorize @publication
-    @publication.destroy
     @publication.user.score -= 3
-    @publication.user.ranking
-    @publication.user.save!@user
+    @publication.user.save!
+    @publication.destroy
     redirect_to publications_path
   end
 
