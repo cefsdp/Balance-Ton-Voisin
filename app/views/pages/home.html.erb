@@ -248,7 +248,7 @@
 </div>
 
 <div class="container mb-3">
-  <h2 class="mt-5"><strong>Les Clashs à la Une</strong></h2>
+  <h2 class="mt-5"><strong>Nos Supers Clashs 🤩</strong></h2>
   <div class="cards">
     <% @clashs.reverse.first(3).each do |clash| %>
       <%= link_to publication_path(clash.clash_request.publication) do %>
@@ -278,7 +278,7 @@
 
 
 <div class="container my-5">
-  <h2 class="my-4"><strong>Les plaintes les plus chaudes de ta région</strong></h2>
+  <h2 class="my-4"><strong>Les plaintes les plus chaudes de ta région 🤯</strong></h2>
   <div class="cards">
       <% @hotpublications.reverse.first(3).each do |publication| %>
         <%= link_to publication_path(publication) do %>
