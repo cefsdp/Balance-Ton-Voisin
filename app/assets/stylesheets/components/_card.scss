@@ -238,10 +238,10 @@
   margin: 10px;
   margin-left: -25px;
   padding: 5px;
-  width: 240px;
   height: 190px;
   border-radius: 50px;
   opacity: 0.4;
+  flex-shrink: 1;
 }
 
 .card-stat-home:hover {
