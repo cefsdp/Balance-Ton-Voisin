@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @disable_nav = true
   	@user = User.find(params[:id])
     authorize @user
+    @user.ranking
     @publications = policy_scope(Publication).where(user: @user)
     @comments = policy_scope(Comment).where(user: @user)
     check_notif_read
