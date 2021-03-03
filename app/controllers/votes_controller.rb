@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     if @vote.save!
       respond_to do |format|
         format.html { redirect_to publication_path(@vote.clash.clash_request.publication)}
-        format.json { render json: { success: true, counter: @vote.clash.votes.where(party: params[:party]).count } }
+        format.json { render json: { success: true, counter: @vote.clash.votes.where(party: params[:party]).count, voteId: @vote.id } }
       end
     else
       respond_to do |format|
@@ -18,15 +18,19 @@ class VotesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
   def destroy
-
+    @vote = Vote.find(params[:id])
+    authorize @vote
+    if @vote.destroy!
+      respond_to do |format|
+        format.html { redirect_to publication_path(@vote.clash.clash_request.publication)}
+        format.json { render json: { success: true, counter: @vote.clash.votes.where(party: params[:party]).count } }
+      end
+    else
+      respond_to do |format|
+        format.html { render publication_path(@vote.clash.clash_request.publication)}
+        format.json { render json: { success: false } }
+      end
+    end
   end
 end

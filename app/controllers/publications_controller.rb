@@ -11,6 +11,8 @@ class PublicationsController < ApplicationController
     @comment = Comment.new
     @clash_requests = ClashRequest.where(publication_id: @publication)
     @clash = Clash.where(clash_request_id: @clash_requests).first
+    @vote_for_publisher = Vote.where(user: current_user, clash: @clash, party: "publisher")
+    @vote_for_contender = Vote.where(user: current_user, clash: @clash, party: "contender")
     if @clash
       @publisher_counter = @clash.votes.where(party: "publisher").count
       @contender_counter = @clash.votes.where(party: "contender").count

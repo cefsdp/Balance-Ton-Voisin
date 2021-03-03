@@ -2,7 +2,10 @@
 	<div class="bodypostshow">
 		<div class="cardpostshow">
 			<% if @clash %>
-				<div data-controller="votes" data-votes-clash-id-value="<%= @clash.id %>">
+				<div 	data-controller="votes" 
+						data-votes-clash-id-value="<%= @clash.id %>"
+						data-votes-vote-publi-id-value="<%= @vote_for_publisher.first.id if @vote_for_publisher.first %>"
+						data-votes-vote-contend-id-value="<%= @vote_for_contender.first.id if @vote_for_contender.first %>">
 					<div class="card-clash-2">
 						<div class="align-items-center">
 
@@ -32,24 +35,24 @@
 								<div class='col-5 d-flex justify-content-center'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutiens</div>
 							</div>
 							<div class="row py-3">
-								<% if Vote.where(user: current_user, clash: @clash, party: "publisher").empty? %>
+								<% if @vote_for_publisher.empty? %>
 									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#publisher">
-										<i id="empty-thumbs-up-publisher" class="far fa-thumbs-up"></i>
+										<i id="publi-thumb" class="far fa-thumbs-up"></i>
 									</div>
 								<% else %>
-									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#">
-										<i id="filled-thumbs-up-publisher" class="fas fa-thumbs-up"></i>
+									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#publisher">
+										<i id="publi-thumb" class="fas fa-thumbs-up"></i>
 									</div>
 								<% end %>
 								
 								<div class="col-2"></div>
-								<% if Vote.where(user: current_user, clash: @clash, party: "contender").empty? %>
+								<% if @vote_for_contender.empty? %>
 									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#contender">
-										<i class="far fa-thumbs-up"></i>
+										<i id="contend-thumb" class="far fa-thumbs-up"></i>
 									</div>
 								<% else %>
-									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#">
-										<i class="fas fa-thumbs-up"></i>
+									<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#contender">
+										<i id="contend-thumb" class="fas fa-thumbs-up"></i>
 									</div>
 								<% end %>
 							</div>
