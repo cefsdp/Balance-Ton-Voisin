@@ -10,42 +10,41 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <% # Notifications %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto notifs">
         <li class="nav-item dropdown">
-          <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.where(read_at: nil).count != 0 %><div class="notif_indic"><%= current_user.notifications.where(read_at: nil).count %></div><% end %>
+          <i class="fas fa-bell" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><% if current_user.notifications.count != 0 %><div class="notif_indic"><%= current_user.notifications.count %></div><% end %>
           <div class="dropdown-menu dropdown-menu-right dropnotifs" aria-labelledby="navbarDropdown">
-            <% current_user.notifications.newest_first.each do |notification| %>
+            
+            <% if current_user.notifications.count == 0 %>
+              <div class="dropdown-item notif">
+                        <div class="notext">Vous n'avez pas de nouvelles notifications</div>
+            <% else %>
+              <% current_user.notifications.reverse.each do |notification| %>
+                <% # raise %>
+                  <% if notification.notification_type = "comment" %>
 
-              <% if  notification.read_at.nil? %>
+                    <%= link_to publication_path(notification.params['data']['publication_id']) do %>
+                      <div class="dropdown-item notif">
+                        <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
+                        <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params['data']['user_id']).username %></div>
+                      </div>
+                    <% end %>
+                  
+                  <% elsif notification.notification_type = "clashrequest" %>
 
-                <% if notification.type == "CommentNotification" %>
-                  <%= link_to publication_path(notification.params[:comment].publication_id) do %>
-                    <div class="dropdown-item notif">
-                      <div class="new"></div>
-                      <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params[:comment].user_id).username %></div>
-                    </div>
+                    <%= link_to publication_path(notification.params['data']['publication_id']) do %>
+                      <div class="dropdown-item notif">
+                        <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
+                        <div class="text">Vous avez une demande de clash par <%= User.find(notification.params['data']['user_id']).username %></div>
+                      </div>
+                    <% end %>
+
                   <% end %>
-                <% end %>
-
-              <% else %>
-
-                <% if notification.type == "CommentNotification" %>
-                  <%= link_to publication_path(notification.params[:comment].publication_id) do %>
-                    <div class="dropdown-item notif">
-                      <div class="old"></div>
-                      <div class="text">Vous avez un nouveau commentaire de <%= User.find(notification.params[:comment].user_id).username %></div>
-                    </div>
-                  <% end %>
-                <% end %>
-
               <% end %>
-
             <% end %>
-            <% # raise %>
           </div>
         </li>
       </ul>

@@ -18,19 +18,26 @@ export default class extends Controller {
   publisher() {
   	// console.log(this.clashIdValue);
     // this.outputTarget.textContent = 'Hello, Stimulus!'
-	fetchWithToken(`/clashes/${this.clashIdValue}/votes`, {
-		method: "POST",
-		headers: { 
-			accept: "application/json",
-			'Content-Type': "application/json"
-		},
-		body: JSON.stringify({party: "publisher"}) 
-	})
-		.then(response => response.json())
-		.then((data) => {
-			console.log(data);
-			document.querySelector("#publisher-count").innerHTML = data.counter
-		});
+    if (document.getElementById("empty-thumbs-up-publisher")) {
+		fetchWithToken(`/clashes/${this.clashIdValue}/votes`, {
+			method: "POST",
+			headers: { 
+				accept: "application/json",
+				'Content-Type': "application/json"
+			},
+			body: JSON.stringify({party: "publisher"}) 
+		})
+			.then(response => response.json())
+			.then((data) => {
+				console.log(data);
+				document.querySelector("#publisher-count").innerHTML = data.counter;
+				document.querySelector("#empty-thumbs-up-publisher").classList.remove("far").add("fas")
+			});
+    } 
+    if (document.getElementById("filled-thumbs-up-publisher")) {
+
+    }
+
   }
 
   contender() {
@@ -46,7 +53,7 @@ export default class extends Controller {
 		.then(response => response.json())
 		.then((data) => {
 			console.log(data);
-			document.querySelector("#contender-count").innerHTML = data.counter
+			document.querySelector("#contender-count").innerHTML = data.counter;
 
 		});
   }

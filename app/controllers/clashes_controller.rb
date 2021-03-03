@@ -1,7 +1,6 @@
 class ClashesController < ApplicationController
-
   def index
-  	@clash = policy_scope(Clash)
+    @clash = policy_scope(Clash)
   end
 
   def create
@@ -16,4 +15,12 @@ class ClashesController < ApplicationController
     redirect_to publication_path(@publication) if @clash.save!
   end
 
+  private
+
+  def notificationcable
+    NotificationChannel.broadcast_to(
+      @publication.user,
+      txt: `Vous avez une demande de clash par #{@comment.user}`
+    )
+  end
 end

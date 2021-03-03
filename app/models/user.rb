@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :publications, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :notifications, as: :recipient
+  has_many :notifications
 
   #validates :username, presence: true
   validates :username, uniqueness: true
