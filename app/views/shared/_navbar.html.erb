@@ -49,7 +49,7 @@
                     <%= link_to user_path(notification.user_id) do %>
                       <div class="dropdown-item notif">
                         <% if notification.read_at.nil? %><div class="new"></div><% else %><div class="old"></div><% end %>
-                        <div class="text">Vous êtes devenu un <%= User.find(notification.user_id).description %></div>
+                        <div class="text">Vous êtes devenu un <%= notification.params['data'] %></div>
                       </div>
                     <% end %>
 
