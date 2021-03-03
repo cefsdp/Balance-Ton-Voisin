@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   def ranking
     @user = self
+    @initial = @user.description
     if @user.score <= -20
       @user.description = "Vraiment un voisin pourri"
     elsif @user.score <= -10
@@ -35,5 +36,25 @@ class User < ApplicationRecord
     else
       @user.description = "Dieu parmi les voisins"
     end
+    @final = @user.description
+    ranking_controll
+  end
+
+  private
+
+  def ranking_controll
+    notification_builder if @initial != @final
+  end
+
+  def notification_builder
+    @notification = Notification.create(notification_type: "ranking", user_id: @user.id, params: { data: @user.description })
+    notificationcable
+  end
+
+  def notificationcable
+    NotificationChannel.broadcast_to(
+      @user,
+      txt: `Vous avez gagné un niveau : #{@user}`
+    )
   end
 end

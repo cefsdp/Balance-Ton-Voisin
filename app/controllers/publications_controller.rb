@@ -47,7 +47,7 @@ class PublicationsController < ApplicationController
     @publication.destroy
     @publication.user.score -= 3
     @publication.user.ranking
-    @publication.user.save!
+    @publication.user.save!@user
     redirect_to publications_path
   end
 
