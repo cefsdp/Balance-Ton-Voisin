@@ -43,7 +43,19 @@
       </div>
     </div>
 
-    <div class="col-8 pr-5 user-publications">
+    <div class="col-8 pr-5 user-publications pt-5">
+      <div class="text-center">
+        <% if @publications.empty? %>
+          <div class="pitimsg py-3">
+              Vous n'avez encore rien publié.
+          </div>
+          <%= link_to root_path do  %>
+            <div class="btn btn-flat">
+              Commencer à dénoncer
+            </div>
+          <% end %>
+      </div>
+      <% end %>
       <% @publications.reverse.each do |publication| %>
         <% if publication.clash_requests == [] %>
           <%= link_to publication_path(publication) do %>
