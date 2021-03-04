@@ -3,9 +3,11 @@
   <div class="container mt-5" data-toggle="modal" data-target="#inputModal">
     <div class="form-inline text-area-container">
       <p class="text-secondary mt-3"> Un problème avec ton voisin ?</p>
-      <button type="button" class="btn btn-flat text-area-button mb-2">
-        Dénonce !
-      </button>
+        <button type="button" class="btn btn-flat text-area-button mb-2">
+          <div class="tooltip">Dénonce !
+            <span class="tooltiptextdenonce"> 3 points </span>
+          </div>
+        </button>
     </div>
   </div>
 </div>
@@ -55,8 +57,8 @@
               </div>
               <div class="d-flex justify-content-between pt-3">
 
-              
-              
+
+
                 <p> <%= clash[0].votes.where(party: "publisher").count %> soutien(s) <i class="far fa-thumbs-up"></i></p>
                 <p class="text-secondary">Fin du Clash: <%= clash[0].countdown_end.strftime("%d/%m/%Y") %></p>
                 <p> <%= clash[0].votes.where(party: "contender").count %> soutien(s) <i class="far fa-thumbs-up"></i></p>

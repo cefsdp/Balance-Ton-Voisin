@@ -27,13 +27,13 @@ class User < ApplicationRecord
   def ranking
     @user = self
     @initial = @user.description
-    if @user.score <= -20
+    if @user.score <= -50
       @user.description = "Vraiment un voisin pourri"
-    elsif @user.score <= -10
+    elsif @user.score <= -20
       @user.description = "Karen"
-    elsif @user.score <= 10
-      @user.description = "Voisin lambda"
     elsif @user.score <= 20
+      @user.description = "Voisin lambda"
+    elsif @user.score <= 50
       @user.description = "Organisateur de la fête des voisins"
     else
       @user.description = "Dieu parmi les voisins"

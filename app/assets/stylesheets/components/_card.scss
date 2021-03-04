@@ -396,11 +396,12 @@
     padding: 30px;
     border-radius: 40px;
     border: 1px solid rgba(212, 178, 255, 0.66);
-    transition: transform .2s; /* Animation */
+    transition: transform 0s; /* Animation */
     &:hover {
       transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
       text-decoration: none;
     }
+
   .posthead{
     display: flex;
     justify-content: space-between;
