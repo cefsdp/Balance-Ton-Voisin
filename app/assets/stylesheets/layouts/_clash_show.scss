@@ -1,9 +1,16 @@
-.card-clash-2 {    
+.card-clash-2 {
+    margin-top: 2px;
     margin-bottom: 20px;
     background-color: white;
     color: black;
+    transition: transform 0s; /* Animation */
+    &:hover {
+      transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      text-decoration: none;
+    }
     a {
       color: rgba(0,0,0,0.8);
+
     }
 
     padding: 30px;
