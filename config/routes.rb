@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :comments, only: [ :destroy ]
   resources :clash_requests, only: [ :destroy, :edit, :update ]
+  resources :clashes, only: [ :destroy ]
   resources :users, only: [ :show ]
   resources :votes, only: [ :destroy ]
 end
