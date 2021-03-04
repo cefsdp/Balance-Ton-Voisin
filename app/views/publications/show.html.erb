@@ -7,7 +7,7 @@
 						data-votes-clash-id-value="<%= @clash.id %>"
 						data-votes-vote-publi-id-value="<%= @vote_for_publisher.first.id if @vote_for_publisher.first %>"
 						data-votes-vote-contend-id-value="<%= @vote_for_contender.first.id if @vote_for_contender.first %>">
-					<div class="card-clash-2">
+					<div class="card-clash-show">
 						<div class="align-items-center">
 							<span class="d-flex justify-content-end"><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt deletething"></i><% end %><% end %></span>
 							<div class="row">
