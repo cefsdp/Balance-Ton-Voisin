@@ -7,7 +7,7 @@
 						data-votes-clash-id-value="<%= @clash.id %>"
 						data-votes-vote-publi-id-value="<%= @vote_for_publisher.first.id if @vote_for_publisher.first %>"
 						data-votes-vote-contend-id-value="<%= @vote_for_contender.first.id if @vote_for_contender.first %>">
-					<div class="card-clash-2">
+					<div class="card-clash-show">
 						<div class="align-items-center">
 							<span class="d-flex justify-content-end"><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt deletething"></i><% end %><% end %></span>
 							<div class="row">
@@ -31,10 +31,23 @@
 								</div>
 							</div>
 							<div class="row pt-3">
-								<div class='col-5 d-flex justify-content-center'><span id="publisher-count" > <%= @publisher_counter %> </span>&nbspsoutien(s)</div>
-								<div class="col-2"></div>
-								<div class='col-5 d-flex justify-content-center'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutien(s)</div>
+                <% if @publisher_counter > @contender_counter  %>
+  								<div class='col-5 d-flex justify-content-center text-success'><span id="publisher-count" > <%= @publisher_counter %> </span>&nbspsoutien(s)</div>
+  								<div class="col-2"></div>
+  								<div class='col-5 d-flex justify-content-center text-danger'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutien(s)</div>
+                <% elsif @publisher_counter == @contender_counter  %>
+                  <div class='col-5 d-flex justify-content-center'><span id="publisher-count" > <%= @publisher_counter %> </span>&nbspsoutien(s)</div>
+                  <div class="col-2"></div>
+                  <div class='col-5 d-flex justify-content-center'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutien(s)</div>
+                <% else %>
+                  <div class='col-5 d-flex justify-content-center text-danger'><span id="publisher-count" > <%= @publisher_counter %> </span>&nbspsoutien(s)</div>
+                  <div class="col-2"></div>
+                  <div class='col-5 d-flex justify-content-center text-success'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutien(s)</div>
+                <% end %>
 							</div>
+
+
+
 							<% if @clash.clash_request.user != current_user && @publication.user != current_user %>
 
 
@@ -45,7 +58,7 @@
                         <div class='thumbs-upvote' data-action="click->votes#publisher">
                           <i id="publi-thumb" class="far fa-thumbs-up"></i>
                         </div>
-                        <span class="tooltiptextvote"> 1 points </span>
+                        <span class="tooltiptextvote"> 1 point </span>
                       </div>
                     </div>
 
@@ -55,7 +68,7 @@
                         <div class='thumbs-upvote' data-action="click->votes#publisher">
                           <i id="publi-thumb" class="far fa-thumbs-up"></i>
                         </div>
-                        <span class="tooltiptextvote"> 1 points </span>
+                        <span class="tooltiptextvote"> 1 point </span>
                       </div>
                     </div>
 									<% end %>
@@ -65,7 +78,7 @@
                     <div class='col-5 d-flex justify-content-center'>
                       <div class="tooltip">
                         <div class='thumbs-upvote' data-action="click->votes#contender">
-                          <i id="publi-thumb" class="far fa-thumbs-up"></i>
+                          <i id="contend-thumb" class="far fa-thumbs-up"></i>
                         </div>
                         <span class="tooltiptextvote"> 1 points </span>
                       </div>
@@ -74,7 +87,7 @@
                     <div class='col-5 d-flex justify-content-center'>
                       <div class="tooltip">
                         <div class='thumbs-upvote' data-action="click->votes#contender">
-                          <i id="publi-thumb" class="far fa-thumbs-up"></i>
+                          <i id="contend-thumb" class="far fa-thumbs-up"></i>
                         </div>
                         <span class="tooltiptextvote"> 1 points </span>
                       </div>

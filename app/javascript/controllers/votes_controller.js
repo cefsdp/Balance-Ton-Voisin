@@ -14,9 +14,9 @@ import { fetchWithToken } from '../utils/fetch_with_token';
 export default class extends Controller {
   // static targets = [ "output" ]
 	static values = { clashId: String,
-										votePubliId: String,
-										voteContendId: String
-  								};
+					  votePubliId: String,
+					  voteContendId: String
+  					};
 
   publisher(event) {
   	// console.log(this.clashIdValue);
@@ -41,6 +41,7 @@ export default class extends Controller {
 					publiThumbsUp.classList.add("fas");
 					this.votePubliIdValue = data.voteId;
 					if (contendThumbsUp.classList.contains("fas")) {
+						console.log("ok")
 						contendThumbsUp.parentNode.click();
 					}
 				});
@@ -65,7 +66,7 @@ export default class extends Controller {
 	  }
   }
 
-  contender() {
+  contender(event) {
     // this.outputTarget.textContent = 'Hello, Stimulus!'
 		const contendThumbsUp = event.currentTarget.firstElementChild;
 		const publiThumbsUp = document.getElementById("publi-thumb");
@@ -87,7 +88,6 @@ export default class extends Controller {
 					contendThumbsUp.classList.add("fas");
 					this.voteContendIdValue = data.voteId
 					if (publiThumbsUp.classList.contains("fas")) {
-						console.log(publiThumbsUp)
 						publiThumbsUp.parentNode.click();
 					}
 				});
