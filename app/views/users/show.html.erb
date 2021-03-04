@@ -45,7 +45,7 @@
 
     <div class="col-8 pr-5 user-publications pt-5">
       <div class="text-center">
-        <% if @publications.empty? %>
+        <% if @publications.empty? && @clashcount.count == 0 %>
           <div class="pitimsg py-3">
               Vous n'avez encore rien publié.
           </div>
