@@ -3,7 +3,7 @@
 		<div class="cardpostshow">
 			<% if @clash %>
 
-				<div 	data-controller="votes" 
+				<div 	data-controller="votes"
 						data-votes-clash-id-value="<%= @clash.id %>"
 						data-votes-vote-publi-id-value="<%= @vote_for_publisher.first.id if @vote_for_publisher.first %>"
 						data-votes-vote-contend-id-value="<%= @vote_for_contender.first.id if @vote_for_contender.first %>">
@@ -15,7 +15,7 @@
 								<%= link_to user_path(@publication.user), class: "col-5" do  %>
 									<div class="d-flex justify-content-center">
 										<%= cl_image_tag @publication.user.profile_picture, class: " border avatar-large"%>
-										<div class="username pl-3"> 
+										<div class="username pl-3">
 											<%= @publication.user.username %>
 										</div>
 									</div>
@@ -36,28 +36,49 @@
 								<div class='col-5 d-flex justify-content-center'><span  id="contender-count"><%= @contender_counter %> </span>&nbspsoutien(s)</div>
 							</div>
 							<% if @clash.clash_request.user != current_user && @publication.user != current_user %>
-								
-							
+
+
 								<div class="row py-3">
 									<% if @vote_for_publisher.empty? %>
-										<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#publisher">
-											<i id="publi-thumb" class="far fa-thumbs-up"></i>
-										</div>
+                    <div class='col-5 d-flex justify-content-center'>
+                      <div class="tooltip">
+                        <div class='thumbs-upvote' data-action="click->votes#publisher">
+                          <i id="publi-thumb" class="far fa-thumbs-up"></i>
+                        </div>
+                        <span class="tooltiptextvote"> 1 points </span>
+                      </div>
+                    </div>
+
 									<% else %>
-										<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#publisher">
-											<i id="publi-thumb" class="fas fa-thumbs-up"></i>
-										</div>
+                    <div class='col-5 d-flex justify-content-center'>
+                      <div class="tooltip">
+                        <div class='thumbs-upvote' data-action="click->votes#publisher">
+                          <i id="publi-thumb" class="far fa-thumbs-up"></i>
+                        </div>
+                        <span class="tooltiptextvote"> 1 points </span>
+                      </div>
+                    </div>
 									<% end %>
-									
+
 									<div class="col-2"></div>
 									<% if @vote_for_contender.empty? %>
-										<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#contender">
-											<i id="contend-thumb" class="far fa-thumbs-up"></i>
-										</div>
+                    <div class='col-5 d-flex justify-content-center'>
+                      <div class="tooltip">
+                        <div class='thumbs-upvote' data-action="click->votes#contender">
+                          <i id="publi-thumb" class="far fa-thumbs-up"></i>
+                        </div>
+                        <span class="tooltiptextvote"> 1 points </span>
+                      </div>
+                    </div>
 									<% else %>
-										<div class='col-5 d-flex justify-content-center thumbs-upvote' data-action="click->votes#contender">
-											<i id="contend-thumb" class="fas fa-thumbs-up"></i>
-										</div>
+                    <div class='col-5 d-flex justify-content-center'>
+                      <div class="tooltip">
+                        <div class='thumbs-upvote' data-action="click->votes#contender">
+                          <i id="publi-thumb" class="far fa-thumbs-up"></i>
+                        </div>
+                        <span class="tooltiptextvote"> 1 points </span>
+                      </div>
+                    </div>
 									<% end %>
 								</div>
 
@@ -72,7 +93,7 @@
 								</div>
 							</div>
 						</div>
-					</div>	
+					</div>
 				</div>
 
 			<% else %>
@@ -97,8 +118,10 @@
 				<% if @publication.user != current_user && ClashRequest.where({publication: @publication, user: current_user}).exists? == false %>
 					<%= link_to new_publication_clash_request_path(@publication) do %>
 						<div class="d-flex justify-content-center mt-5">
-							<div class="btn btn-clash">CLASH</div>
-						</div>
+              <div class="tooltip"><div class="btn btn-clash">CLASH</div>
+                <span class="tooltiptextclash"> 5 points </span>
+              </div>
+            </div>
 					<% end %>
 				<% end %>
 
@@ -136,13 +159,15 @@
 								</span>
 							</div>
 
-							<div class="description"> 
-								<%= request.content %> 
+							<div class="description">
+								<%= request.content %>
 							</div>
 							<% if @publication.user == current_user %>
 								<div class="text-right">
 									<%= link_to clash_request_clashes_path(request), method: :post do %>
-									<div class="btn btn-flat">Accepter le clash</div>
+                    <div class="tooltip"><div class="btn btn-flat">Accepter le clash</div>
+                      <span class="tooltiptextclashrequest"> 5 points </span>
+                    </div>
 									<% end %>
 								</div>
 							<% end %>
@@ -188,8 +213,8 @@
 										</span>
 									</span>
 								</div>
-								<div class="comtext"> 
-									<%= comment.content %> 
+								<div class="comtext">
+									<%= comment.content %>
 
 								</div>
 								<div class="comtext"> <%= comment.content %> </div>
@@ -201,9 +226,11 @@
 
 			<%= simple_form_for [ @publication, @comment ] do |f| %>
 			<%= f.input :content, label: false, :placeholder => 'Commentez' %>
-			<%= f.submit "Publier", id: "submitnewcoms" %>
+      <div class="tooltip"><%= f.submit "Publier", id: "submitnewcoms" %>
+        <span class="tooltiptextcomment"> 2 points </span>
+      </div>
 			<% end %>
 		</div>
 	</div>
-	
+
 </div>

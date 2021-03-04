@@ -1,0 +1,97 @@
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptextcomment {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 5px;
+  right: -90px;
+  z-index: 1;
+}
+
+.tooltip .tooltiptextdenonce {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -60px;
+  right: -5px;
+  z-index: 1;
+}
+.tooltip .tooltiptextclash {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 90px;
+  right: -100px;
+  z-index: 1;
+}
+.tooltip .tooltiptextclashrequest {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -60px;
+  right: 50px;
+  z-index: 1;
+}
+.tooltip .tooltiptextvote {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 5px;
+  right: -100px;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptextcomment {
+  visibility: visible;
+  font-size: 10px;
+}
+
+.tooltip:hover .tooltiptextdenonce {
+  visibility: visible;
+  font-size: 10px;
+}
+.tooltip:hover .tooltiptextclash {
+  visibility: visible;
+  font-size: 10px;
+}
+.tooltip:hover .tooltiptextclashrequest {
+  visibility: visible;
+  font-size: 10px;
+}
+.tooltip:hover .tooltiptextvote {
+  visibility: visible;
+  font-size: 10px;
+}
+
