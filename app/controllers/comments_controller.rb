@@ -70,7 +70,7 @@ class CommentsController < ApplicationController
             @user2 = clash_requ.user_id
             @notification2 = Notification.create(notification_type: "comment", user_id: clash_requ.user_id, params: { data: @comment })
           end
-            notificationcableclash
+          notificationcableclash
         else
           @notification = Notification.create(notification_type: "comment", user_id: @publication.user_id, params: { data: @comment })
           notificationcable
