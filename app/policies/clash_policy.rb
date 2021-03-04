@@ -9,4 +9,7 @@ class ClashPolicy < ApplicationPolicy
     record.clash_request.publication.user == user
   end
 
+  def destroy?
+    record.clash_request.publication.user == user
+  end
 end
