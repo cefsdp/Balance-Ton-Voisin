@@ -5,7 +5,9 @@
   box-shadow: 0 4px 2px -2px rgb(240,240,240);
   position: sticky;
   top: 0;
-  z-index: 2
+  z-index: 2;
+  max-width: 100vw;
+  margin-left: 0px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -49,7 +51,7 @@
 }
 
 .notifs {
-  padding-right: 15px;
+  padding-right: 10px;
   font-size: 20px;
   position: relative;
   .notif_indic {
