@@ -9,7 +9,7 @@
 						data-votes-vote-contend-id-value="<%= @vote_for_contender.first.id if @vote_for_contender.first %>">
 					<div class="card-clash-2">
 						<div class="align-items-center">
-
+							<span class="d-flex justify-content-end"><% if policy(@publication).destroy? %><%= link_to publication_path(@publication), method: :delete do %><i class="far fa-trash-alt deletething"></i><% end %><% end %></span>
 							<div class="row">
 
 								<%= link_to user_path(@publication.user), class: "col-5" do  %>
@@ -213,10 +213,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="comtext">
-									<%= comment.content %>
 
-								</div>
 								<div class="comtext"> <%= comment.content %> </div>
 							</div>
 						</div>
