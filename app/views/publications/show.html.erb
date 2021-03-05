@@ -80,7 +80,7 @@
                         <div class='thumbs-upvote' data-action="click->votes#contender">
                           <i id="contend-thumb" class="far fa-thumbs-up"></i>
                         </div>
-                        <span class="tooltiptextvote"> 1 points </span>
+                        <span class="tooltiptextvote"> 1 point </span>
                       </div>
                     </div>
 									<% else %>
@@ -89,7 +89,7 @@
                         <div class='thumbs-upvote' data-action="click->votes#contender">
                           <i id="contend-thumb" class="fas fa-thumbs-up"></i>
                         </div>
-                        <span class="tooltiptextvote"> 1 points </span>
+                        <span class="tooltiptextvote"> 1 point </span>
                       </div>
                     </div>
 									<% end %>
@@ -152,7 +152,7 @@
 								<span>
 									<span class="comcreation">
 
-										<%= request.created_at %>
+										<%= request.created_at.strftime("%d/%m/%Y") %>
 									</span>
 									<span>
 										<% if policy(request).edit? %>
